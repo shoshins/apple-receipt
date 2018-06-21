@@ -1,5 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
+using System.Text;
+using AppleReceiptParser.Atn1;
 using Newtonsoft.Json;
 
 namespace AppleReceiptParser.Models

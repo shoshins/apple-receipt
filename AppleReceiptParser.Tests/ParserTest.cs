@@ -5,6 +5,7 @@ using AppleReceiptParser.Models;
 using AppleReceiptParser.Services;
 using AppleReceiptParser.Services.NodesParser;
 using AppleReceiptParser.Services.NodesParser.Apple;
+using Autofac;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace AppleReceiptParser.Tests
@@ -12,6 +13,8 @@ namespace AppleReceiptParser.Tests
     [TestClass]
     public class ParserTest
     {
+        private IContainer _container;
+
         [TestMethod]
         public void TestParse()
         {

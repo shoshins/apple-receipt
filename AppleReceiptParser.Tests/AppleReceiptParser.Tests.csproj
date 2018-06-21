@@ -38,6 +38,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Autofac, Version=4.8.1.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <HintPath>..\packages\Autofac.4.8.1\lib\net45\Autofac.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
     <Reference Include="Microsoft.VisualStudio.TestPlatform.TestFramework, Version=14.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\MSTest.TestFramework.1.2.1\lib\net45\Microsoft.VisualStudio.TestPlatform.TestFramework.dll</HintPath>
     </Reference>
@@ -56,7 +60,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\AppleReceiptParser\AppleReceiptParser.csproj">
-      <Project>{9f3bf3a1-41f3-414d-9f14-8af2cddcef17}</Project>
+      <Project>{eaf4c64b-0fdb-4f0d-b538-9d9608a3761c}</Project>
       <Name>AppleReceiptParser</Name>
     </ProjectReference>
   </ItemGroup>
