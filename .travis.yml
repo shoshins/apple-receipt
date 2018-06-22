@@ -1,14 +1,8 @@
 language: csharp
-dist: trusty
-mono: none
-dotnet: 4.6.1
+solution: AppleReceiptParser.sln
 install:
-- nuget restore AppleReceiptParser.sln
+  - nuget restore AppleReceiptParser.sln
+  - nuget install NUnit.Runners -Version 2.6.4 -OutputDirectory testrunner
 script:
-- dotnet build
-- dotnet test AppleReceiptParser.Tests/AppleReceiptParser.Tests.csproj
-- sonar-scanner
-addons:
-  sonarcloud:
-    organization: "shoshins-github"
-    token: $SONAR_TOKEN
+  - xbuild /p:Configuration=Release solution-name.sln
+  - mono ./testrunner/NUnit.Runners.2.6.4/tools/nunit-console.exe ./AppleReceiptParser.Tests/bin/Release/AppleReceiptParser.Tests.dll
