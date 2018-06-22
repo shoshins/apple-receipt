@@ -15,3 +15,6 @@
 
 #Packet CLI
 ```paket add Apple.Receipt.Parser --version 1.0.0```
+
+### Nuget Package Link
+https://www.nuget.org/packages/Apple.Receipt.Parser/
