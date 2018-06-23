@@ -1,5 +1,5 @@
-﻿using AppleReceiptParser.Atn1;
-using AppleReceiptParser.Models;
+﻿using Apple.Receipt.Models;
+using AppleReceiptParser.Asn1;
 using AppleReceiptParser.Services.NodesParser;
 using AppleReceiptParser.Services.NodesParser.Apple;
 

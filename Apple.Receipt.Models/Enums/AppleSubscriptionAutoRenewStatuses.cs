@@ -1,4 +1,4 @@
-﻿namespace AppleReceiptParser.Models
+﻿namespace Apple.Receipt.Models.Enums
 {
     /// <summary>
     ///     The current renewal status for the auto-renewable subscription.

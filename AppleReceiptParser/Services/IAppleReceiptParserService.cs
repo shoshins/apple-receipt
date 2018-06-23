@@ -1,4 +1,4 @@
-﻿using AppleReceiptParser.Models;
+﻿using Apple.Receipt.Models;
 
 namespace AppleReceiptParser.Services
 {

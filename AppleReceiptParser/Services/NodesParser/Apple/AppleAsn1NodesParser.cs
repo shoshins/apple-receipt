@@ -1,5 +1,6 @@
 ﻿using System.Linq;
-using AppleReceiptParser.Atn1;
+using Apple.Receipt.Models;
+using AppleReceiptParser.Asn1;
 using AppleReceiptParser.Models;
 
 namespace AppleReceiptParser.Services.NodesParser.Apple

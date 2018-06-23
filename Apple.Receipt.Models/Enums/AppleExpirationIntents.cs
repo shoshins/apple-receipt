@@ -1,4 +1,4 @@
-﻿namespace AppleReceiptParser.Models
+﻿namespace Apple.Receipt.Models.Enums
 {
     /// <summary>
     ///     For an expired subscription, the reason for the subscription expiration.

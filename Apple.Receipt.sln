@@ -1,0 +1,59 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27703.2026
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Apple.Receipt.Parser", "AppleReceiptParser\Apple.Receipt.Parser.csproj", "{EAF4C64B-0FDB-4F0D-B538-9D9608A3761C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Apple.Receipt.Parser.Tests", "AppleReceiptParser.Tests\Apple.Receipt.Parser.Tests.csproj", "{A4DD9314-712E-42EC-BDB9-1178537F7278}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Apple.Receipt.Models", "Apple.Receipt.Models\Apple.Receipt.Models.csproj", "{B8EF58F0-F53B-4D06-B8FD-ABCF5F8491EB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Apple.Receipt.Verificator", "Apple.Receipt.Verificator\Apple.Receipt.Verificator.csproj", "{9BB44D70-7A14-4ACA-A57B-310B22F2C7F9}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Parser", "Parser", "{F90D60E6-266B-4341-B5C9-C99D0A66973F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Verificator", "Verificator", "{A121C9D8-8828-413D-B138-C373BA96B347}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Apple.Receipt.Verificator.Tests", "Apple.Receipt.Verificator.Tests\Apple.Receipt.Verificator.Tests.csproj", "{D0AB5223-241C-4152-9845-2E91A49FEAE4}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{EAF4C64B-0FDB-4F0D-B538-9D9608A3761C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EAF4C64B-0FDB-4F0D-B538-9D9608A3761C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EAF4C64B-0FDB-4F0D-B538-9D9608A3761C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EAF4C64B-0FDB-4F0D-B538-9D9608A3761C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A4DD9314-712E-42EC-BDB9-1178537F7278}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A4DD9314-712E-42EC-BDB9-1178537F7278}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A4DD9314-712E-42EC-BDB9-1178537F7278}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A4DD9314-712E-42EC-BDB9-1178537F7278}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B8EF58F0-F53B-4D06-B8FD-ABCF5F8491EB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B8EF58F0-F53B-4D06-B8FD-ABCF5F8491EB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B8EF58F0-F53B-4D06-B8FD-ABCF5F8491EB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B8EF58F0-F53B-4D06-B8FD-ABCF5F8491EB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9BB44D70-7A14-4ACA-A57B-310B22F2C7F9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9BB44D70-7A14-4ACA-A57B-310B22F2C7F9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9BB44D70-7A14-4ACA-A57B-310B22F2C7F9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9BB44D70-7A14-4ACA-A57B-310B22F2C7F9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D0AB5223-241C-4152-9845-2E91A49FEAE4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D0AB5223-241C-4152-9845-2E91A49FEAE4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D0AB5223-241C-4152-9845-2E91A49FEAE4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D0AB5223-241C-4152-9845-2E91A49FEAE4}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{EAF4C64B-0FDB-4F0D-B538-9D9608A3761C} = {F90D60E6-266B-4341-B5C9-C99D0A66973F}
+		{A4DD9314-712E-42EC-BDB9-1178537F7278} = {F90D60E6-266B-4341-B5C9-C99D0A66973F}
+		{9BB44D70-7A14-4ACA-A57B-310B22F2C7F9} = {A121C9D8-8828-413D-B138-C373BA96B347}
+		{D0AB5223-241C-4152-9845-2E91A49FEAE4} = {A121C9D8-8828-413D-B138-C373BA96B347}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {6FD45EFB-AA47-4AD2-8384-33621A498BB3}
+	EndGlobalSection
+EndGlobal

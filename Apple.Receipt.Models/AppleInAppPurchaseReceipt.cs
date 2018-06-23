@@ -1,7 +1,8 @@
 ﻿using System;
+using Apple.Receipt.Models.Enums;
 using Newtonsoft.Json;
 
-namespace AppleReceiptParser.Models
+namespace Apple.Receipt.Models
 {
     public class AppleInAppPurchaseReceipt
     {

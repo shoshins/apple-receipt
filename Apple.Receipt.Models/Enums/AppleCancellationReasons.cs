@@ -1,4 +1,4 @@
-﻿namespace AppleReceiptParser.Models
+﻿namespace Apple.Receipt.Models.Enums
 {
     /// <summary>
     ///     For a transaction that was canceled, the reason for cancellation.

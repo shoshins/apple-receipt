@@ -1,4 +1,4 @@
-namespace AppleReceiptParser.Atn1
+namespace AppleReceiptParser.Asn1
 {
     /// <summary>
     ///     Represents codes that encodes ASN1 types.

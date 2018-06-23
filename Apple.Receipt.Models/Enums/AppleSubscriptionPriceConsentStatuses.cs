@@ -1,4 +1,4 @@
-﻿namespace AppleReceiptParser.Models
+﻿namespace Apple.Receipt.Models.Enums
 {
     /// <summary>
     ///     The current price consent status for a subscription price increase.

@@ -1,4 +1,4 @@
-﻿namespace AppleReceiptParser.Atn1
+﻿namespace AppleReceiptParser.Asn1
 {
     /// <summary>
     ///     Define ASN.1 tag class constants.

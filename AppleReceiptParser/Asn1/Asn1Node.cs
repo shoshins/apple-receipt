@@ -3,7 +3,7 @@ using System.Collections;
 using System.IO;
 using AppleReceiptParser.Services.NodesParser;
 
-namespace AppleReceiptParser.Atn1
+namespace AppleReceiptParser.Asn1
 {
     /// <summary>
     ///     Asn1Node, implemented IAsn1Node interface.

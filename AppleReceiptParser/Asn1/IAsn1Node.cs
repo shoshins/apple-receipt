@@ -1,6 +1,6 @@
 ﻿using System.IO;
 
-namespace AppleReceiptParser.Atn1
+namespace AppleReceiptParser.Asn1
 {
     /// <summary>
     ///     IAsn1Node interface.

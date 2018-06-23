@@ -1,7 +1,7 @@
 ﻿using System;
 using System.IO;
 using System.Text;
-using AppleReceiptParser.Atn1;
+using AppleReceiptParser.Asn1;
 
 namespace AppleReceiptParser.Services.NodesParser
 {

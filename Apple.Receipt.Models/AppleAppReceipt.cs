@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using Newtonsoft.Json;
 
-namespace AppleReceiptParser.Models
+namespace Apple.Receipt.Models
 {
     public class AppleAppReceipt
     {

@@ -1,7 +1,7 @@
 using System;
 using System.IO;
 
-namespace AppleReceiptParser.Atn1
+namespace AppleReceiptParser.Asn1
 {
     /// <summary>
     ///     Summary description for OID.
