@@ -5,7 +5,7 @@ using Autofac;
 
 namespace AppleReceiptParser.Modules
 {
-    public class AppleReceiptParserModule: Module
+    public class AppleReceiptParserModule : Module
     {
         protected override void Load(ContainerBuilder builder)
         {

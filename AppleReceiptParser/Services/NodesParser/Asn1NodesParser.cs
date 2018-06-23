@@ -5,45 +5,53 @@ using AppleReceiptParser.Atn1;
 
 namespace AppleReceiptParser.Services.NodesParser
 {
-    public class Asn1NodesParser: IAsn1NodesParser
+    public class Asn1NodesParser : IAsn1NodesParser
     {
         private readonly IAsn1ParserUtilitiesService _utilities;
+
         public Asn1NodesParser(IAsn1ParserUtilitiesService utilities)
         {
             _utilities = utilities;
+        }
+
+        public bool GetBoolFromNode(Asn1Node nn)
+        {
+            string stringFromNode = GetStringFromNode(nn);
+            bool result;
+            return bool.TryParse(stringFromNode, out result) && result;
         }
 
         public string GetStringFromNode(Asn1Node nn)
         {
             string dataStr = null;
 
-            if ((nn.Tag & Asn1Tag.TagMask) == Asn1Tag.OctetString && nn.ChildNodeCount > 0)
+            if ((nn.Tag & Asn1Type.Date) == Asn1Type.OctetString && nn.ChildNodeCount > 0)
             {
                 Asn1Node n = nn.GetChildNode(0);
 
-                switch (n.Tag & Asn1Tag.TagMask)
+                switch (n.Tag & Asn1Type.Date)
                 {
-                    case Asn1Tag.PrintableString:
-                    case Asn1Tag.Ia5String:
-                    case Asn1Tag.UniversalString:
-                    case Asn1Tag.VisibleString:
-                    case Asn1Tag.NumericString:
-                    case Asn1Tag.UtcTime:
-                    case Asn1Tag.Utf8String:
-                    case Asn1Tag.Bmpstring:
-                    case Asn1Tag.GeneralString:
-                    case Asn1Tag.GeneralizedTime:
+                    case Asn1Type.PrintableString:
+                    case Asn1Type.Ia5String:
+                    case Asn1Type.UniversalString:
+                    case Asn1Type.VisibleString:
+                    case Asn1Type.NumericString:
+                    case Asn1Type.UtcTime:
+                    case Asn1Type.Utf8String:
+                    case Asn1Type.Bmpstring:
+                    case Asn1Type.GeneralString:
+                    case Asn1Type.GeneralizedTime:
+                    {
+                        if ((n.Tag & Asn1Type.Date) == Asn1Type.Utf8String)
                         {
-                            if ((n.Tag & Asn1Tag.TagMask) == Asn1Tag.Utf8String)
-                            {
-                                UTF8Encoding unicode = new UTF8Encoding();
-                                dataStr = unicode.GetString(n.Data);
-                            }
-                            else
-                            {
-                                dataStr = Encoding.ASCII.GetString(n.Data);
-                            }
+                            UTF8Encoding unicode = new UTF8Encoding();
+                            dataStr = unicode.GetString(n.Data);
                         }
+                        else
+                        {
+                            dataStr = Encoding.ASCII.GetString(n.Data);
+                        }
+                    }
                         break;
                 }
             }
@@ -64,8 +72,8 @@ namespace AppleReceiptParser.Services.NodesParser
 
         public string GetDateTimeMsFromNode(Asn1Node nn)
         {
-            var date = GetDateTimeFromNode(nn);
-            var epoch = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
+            DateTime date = GetDateTimeFromNode(nn);
+            DateTime epoch = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
             return Convert.ToInt64((date - epoch).TotalMilliseconds).ToString();
         }
 
@@ -73,11 +81,13 @@ namespace AppleReceiptParser.Services.NodesParser
         {
             int retval = -1;
 
-            if ((nn.Tag & Asn1Tag.TagMask) == Asn1Tag.OctetString && nn.ChildNodeCount > 0)
+            if ((nn.Tag & Asn1Type.Date) == Asn1Type.OctetString && nn.ChildNodeCount > 0)
             {
                 Asn1Node n = nn.GetChildNode(0);
-                if ((n.Tag & Asn1Tag.TagMask) == Asn1Tag.Integer)
-                    retval = (int)_utilities.BytesToLong(n.Data);
+                if ((n.Tag & Asn1Type.Date) == Asn1Type.Integer)
+                {
+                    retval = (int) _utilities.BytesToLong(n.Data);
+                }
             }
             return retval;
         }

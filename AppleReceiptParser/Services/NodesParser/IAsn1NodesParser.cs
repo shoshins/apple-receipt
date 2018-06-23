@@ -7,6 +7,8 @@ namespace AppleReceiptParser.Services.NodesParser
     {
         string GetStringFromNode(Asn1Node nn);
 
+        bool GetBoolFromNode(Asn1Node nn);
+
         DateTime GetDateTimeFromNode(Asn1Node nn);
 
         string GetDateTimeMsFromNode(Asn1Node nn);

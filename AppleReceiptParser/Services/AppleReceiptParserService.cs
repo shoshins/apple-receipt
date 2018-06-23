@@ -1,13 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using AppleReceiptParser.Atn1;
+﻿using AppleReceiptParser.Atn1;
 using AppleReceiptParser.Models;
 using AppleReceiptParser.Services.NodesParser;
+using AppleReceiptParser.Services.NodesParser.Apple;
 
 namespace AppleReceiptParser.Services
 {
-    public class AppleReceiptParserService: IAppleReceiptParserService
+    public class AppleReceiptParserService : IAppleReceiptParserService
     {
         private readonly IAppleAsn1NodesParser _appleNodesParser;
         private readonly IAsn1NodesParser _nodesParser;

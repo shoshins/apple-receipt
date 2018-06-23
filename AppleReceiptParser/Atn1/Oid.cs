@@ -1,17 +1,16 @@
 using System;
-using System.Collections.Specialized;
 using System.IO;
 
 namespace AppleReceiptParser.Atn1
 {
     /// <summary>
-    /// Summary description for OID.
-    /// This class is used to encode and decode OID strings.
+    ///     Summary description for OID.
+    ///     This class is used to encode and decode OID strings.
     /// </summary>
     public class Oid
     {
         /// <summary>
-        /// Decode OID byte array to OID string.
+        ///     Decode OID byte array to OID string.
         /// </summary>
         /// <param name="data">source byte array.</param>
         /// <returns>result OID string.</returns>
@@ -21,61 +20,58 @@ namespace AppleReceiptParser.Atn1
             {
                 ms.Position = 0;
                 string retval = Decode(ms);
-                ms.Close();
                 return retval;
             }
         }
-        
+
         /// <summary>
-        /// Decode OID <see cref="Stream"/> and return OID string.
+        ///     Decode OID <see cref="Stream" /> and return OID string.
         /// </summary>
         /// <param name="bt">source stream.</param>
         /// <returns>result OID string.</returns>
         public virtual string Decode(Stream bt)
         {
             string retval = "";
-            byte b;
             ulong v = 0;
-            b = (byte) bt.ReadByte();
-            retval += Convert.ToString(b/40);
-            retval += "." + Convert.ToString(b%40);
+            byte b = (byte) bt.ReadByte();
+            retval += Convert.ToString(b / 40);
+            retval += "." + Convert.ToString(b % 40);
             while (bt.Position < bt.Length)
             {
                 try
                 {
                     DecodeValue(bt, ref v);
-                    retval += "." + v.ToString();
+                    retval += "." + v;
                 }
-                catch(Exception e)
+                catch (Exception e)
                 {
                     throw new Exception("Failed to decode OID value: " + e.Message);
                 }
             }
             return retval;
         }
-        
+
         /// <summary>
-        /// Decode single OID value.
+        ///     Decode single OID value.
         /// </summary>
         /// <param name="bt">source stream.</param>
         /// <param name="v">output value</param>
         /// <returns>OID value bytes.</returns>
         protected int DecodeValue(Stream bt, ref ulong v)
         {
-            byte b;
-            int i=0;
+            int i = 0;
             v = 0;
             while (true)
             {
-                b = (byte) bt.ReadByte();
+                byte b = (byte) bt.ReadByte();
                 i++;
                 v <<= 7;
                 v += (ulong) (b & 0x7f);
                 if ((b & 0x80) == 0)
+                {
                     return i;
+                }
             }
         }
-
     }
 }
-

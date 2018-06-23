@@ -42,13 +42,18 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Atn1\Asn1Node.cs" />
+    <Compile Include="Atn1\Asn1Type.cs" />
     <Compile Include="Atn1\Asn1Tag.cs" />
-    <Compile Include="Atn1\Asn1TagClasses.cs" />
     <Compile Include="Atn1\IAsn1Node.cs" />
     <Compile Include="Atn1\Oid.cs" />
     <Compile Include="Models\AppleAppReceipt.cs" />
+    <Compile Include="Models\Enums\AppleBillingRetryPeriods.cs" />
+    <Compile Include="Models\Enums\AppleCancellationReasons.cs" />
+    <Compile Include="Models\Enums\AppleExpirationIntents.cs" />
     <Compile Include="Models\AppleInAppPurchaseReceipt.cs" />
-    <Compile Include="Models\AppReceiptAsnTypes.cs" />
+    <Compile Include="Models\Enums\AppleSubscriptionAutoRenewStatuses.cs" />
+    <Compile Include="Models\Enums\AppleSubscriptionPriceConsentStatuses.cs" />
+    <Compile Include="Models\Enums\AppReceiptAsnTypes.cs" />
     <Compile Include="Modules\AppleReceiptParserModule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\AppleReceiptParserService.cs" />
