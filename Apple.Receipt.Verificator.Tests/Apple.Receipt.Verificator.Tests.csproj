@@ -39,6 +39,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Apple.Receipt.Models, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Apple.Receipt.Models.1.0.0\lib\net461\Apple.Receipt.Models.dll</HintPath>
+    </Reference>
+    <Reference Include="Apple.Receipt.Parser, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Apple.Receipt.Parser.1.1.0\lib\net461\Apple.Receipt.Parser.dll</HintPath>
+    </Reference>
     <Reference Include="Autofac, Version=3.5.0.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
       <HintPath>..\packages\Autofac.3.5.2\lib\net40\Autofac.dll</HintPath>
     </Reference>
@@ -75,10 +81,6 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Apple.Receipt.Models\Apple.Receipt.Models.csproj">
-      <Project>{B8EF58F0-F53B-4D06-B8FD-ABCF5F8491EB}</Project>
-      <Name>Apple.Receipt.Models</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Apple.Receipt.Verificator\Apple.Receipt.Verificator.csproj">
       <Project>{9bb44d70-7a14-4aca-a57b-310b22f2c7f9}</Project>
       <Name>Apple.Receipt.Verificator</Name>

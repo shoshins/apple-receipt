@@ -38,10 +38,16 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Apple.Receipt.Models, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Apple.Receipt.Models.1.0.0\lib\net461\Apple.Receipt.Models.dll</HintPath>
+    </Reference>
     <Reference Include="Autofac, Version=3.5.0.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
       <HintPath>..\packages\Autofac.3.5.2\lib\net40\Autofac.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.11.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="nunit.framework, Version=3.10.1.0, Culture=neutral, PublicKeyToken=2638cd05610744eb, processorArchitecture=MSIL">
       <HintPath>..\packages\NUnit.3.10.1\lib\net45\nunit.framework.dll</HintPath>
     </Reference>
@@ -66,10 +72,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Apple.Receipt.Models\Apple.Receipt.Models.csproj">
-      <Project>{b8ef58f0-f53b-4d06-b8fd-abcf5f8491eb}</Project>
-      <Name>Apple.Receipt.Models</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Apple.Receipt.Parser\Apple.Receipt.Parser.csproj">
       <Project>{eaf4c64b-0fdb-4f0d-b538-9d9608a3761c}</Project>
       <Name>Apple.Receipt.Parser</Name>

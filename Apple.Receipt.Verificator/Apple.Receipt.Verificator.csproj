@@ -32,6 +32,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Apple.Receipt.Models, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Apple.Receipt.Models.1.0.0\lib\net461\Apple.Receipt.Models.dll</HintPath>
+    </Reference>
+    <Reference Include="Apple.Receipt.Parser, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Apple.Receipt.Parser.1.1.0\lib\net461\Apple.Receipt.Parser.dll</HintPath>
+    </Reference>
     <Reference Include="Autofac, Version=3.5.0.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
       <HintPath>..\packages\Autofac.3.5.2\lib\net40\Autofac.dll</HintPath>
     </Reference>
@@ -69,17 +75,8 @@
     <Compile Include="Services\IRestService.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="app.config" />
     <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Apple.Receipt.Models\Apple.Receipt.Models.csproj">
-      <Project>{b8ef58f0-f53b-4d06-b8fd-abcf5f8491eb}</Project>
-      <Name>Apple.Receipt.Models</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Apple.Receipt.Parser\Apple.Receipt.Parser.csproj">
-      <Project>{eaf4c64b-0fdb-4f0d-b538-9d9608a3761c}</Project>
-      <Name>Apple.Receipt.Parser</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\Refit.4.6.16\build\net461\refit.targets" Condition="Exists('..\packages\Refit.4.6.16\build\net461\refit.targets')" />
