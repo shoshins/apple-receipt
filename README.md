@@ -37,9 +37,9 @@ https://www.nuget.org/packages/Apple.Receipt.Parser/
 | [![NuGet](https://img.shields.io/nuget/v/Apple.Receipt.Parser.svg)](https://www.nuget.org/packages/Apple.Receipt.Parser/) | [![NuGet](https://img.shields.io/nuget/dt/Apple.Receipt.Parser.svg)](Apple.Receipt.Parser) |
 
 ### Installation:
-* (Package manager): ```Install-Package Apple.Receipt.Parser -Version 1.0.0```
-* (.Net CI): ```dotnet add package Apple.Receipt.Parser --version 1.0.0```
-* (Packet CLI): ```paket add Apple.Receipt.Parser --version 1.0.0```
+* (Package manager): ```Install-Package Apple.Receipt.Parser -Version 1.1.1```
+* (.Net CI): ```dotnet add package Apple.Receipt.Parser --version 1.1.1```
+* (Packet CLI): ```paket add Apple.Receipt.Parser --version 1.1.1```
 
 ## Apple Receipt Verificator
 
