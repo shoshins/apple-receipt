@@ -1,18 +1,18 @@
 <?xml version="1.0"?>
-<package>
+<package >
   <metadata>
-    <id>Apple.Receipt.Parser</id>
-    <version>1.1.0</version>
-    <title>Apple.Receipt.Parser</title>
+    <id>Apple.Receipt.Verificator</id>
+    <version>1.0.0</version>
+    <title>Apple.Receipt.Verificator</title>
     <authors>sergeys</authors>
     <owners>sergeys</owners>
     <licenseUrl>https://github.com/shoshins/apple-receipt/blob/master/LICENSE</licenseUrl>
     <projectUrl>https://github.com/shoshins/apple-receipt</projectUrl>
     <iconUrl>https://raw.githubusercontent.com/shoshins/apple-receipt/master/icon.png</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <description>Parser for Apple Receipt that represented in base64 and encoded with ASN.1</description>
-    <releaseNotes>Apple Receipt Parser improved</releaseNotes>
+    <description>Library for validating receipts with the App Store</description>
+    <releaseNotes>Basic Apple Receipt Validator. Two step verification: pre-validation that can be customized and App Store verification.</releaseNotes>
     <copyright>Copyright Sergey Shoshin 2018</copyright>
-    <tags>Apple Receipt Parser Base64 Asn1 Asn.1</tags>
+    <tags>Apple Receipt Validation AppStore</tags>
   </metadata>
 </package>
