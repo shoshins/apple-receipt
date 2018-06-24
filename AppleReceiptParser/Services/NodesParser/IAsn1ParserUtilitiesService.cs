@@ -1,8 +1,8 @@
 ﻿using System.IO;
 
-namespace AppleReceiptParser.Services.NodesParser
+namespace Apple.Receipt.Parser.Services.NodesParser
 {
-    public interface IAsn1ParserUtilitiesService
+    internal interface IAsn1ParserUtilitiesService
     {
         long BytesToLong(byte[] bytes);
         int BytePrecision(ulong value);

@@ -2,12 +2,12 @@ using System.Reflection;
 using System.Runtime.InteropServices;
 
 [assembly: AssemblyTitle("Apple.Receipt.Verificator.Tests")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("NUnit Tests for Apple.Receipt.Verificator library")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
+[assembly: AssemblyCompany("Sergey Shoshin")]
 [assembly: AssemblyProduct("Apple.Receipt.Verificator.Tests")]
-[assembly: AssemblyCopyright("Copyright ©  2018")]
-[assembly: AssemblyTrademark("")]
+[assembly: AssemblyCopyright("Copyright © Sergey Shoshin 2018")]
+[assembly: AssemblyTrademark("Sergey Shoshin")]
 [assembly: AssemblyCulture("")]
 
 [assembly: ComVisible(false)]

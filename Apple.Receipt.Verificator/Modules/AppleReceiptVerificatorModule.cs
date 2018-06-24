@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Net.Http;
+using Apple.Receipt.Parser.Modules;
 using Apple.Receipt.Verificator.Models;
 using Apple.Receipt.Verificator.Services;
-using AppleReceiptParser.Modules;
 using Autofac;
 using Refit;
 using Serilog;

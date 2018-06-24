@@ -1,11 +1,11 @@
 ﻿using System;
 using System.IO;
 using System.Text;
-using AppleReceiptParser.Asn1;
+using Apple.Receipt.Parser.Asn1;
 
-namespace AppleReceiptParser.Services.NodesParser
+namespace Apple.Receipt.Parser.Services.NodesParser
 {
-    public class Asn1NodesParser : IAsn1NodesParser
+    internal class Asn1NodesParser : IAsn1NodesParser
     {
         private readonly IAsn1ParserUtilitiesService _utilities;
 

@@ -1,15 +1,16 @@
 ﻿using System.Reflection;
+using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("AppleReceiptParser")]
+[assembly: AssemblyTitle("Apple.Receipt.Parser")]
 [assembly: AssemblyDescription("Parser For Apple Base64 Receipt")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Sergey Shoshin")]
 [assembly: AssemblyProduct("AppleReceiptParser")]
-[assembly: AssemblyCopyright("Sergey Shoshin © 2018")]
+[assembly: AssemblyCopyright("Copyright © Sergey Shoshin 2018")]
 [assembly: AssemblyTrademark("Sergey Shoshin")]
 [assembly: AssemblyCulture("")]
 
@@ -33,3 +34,5 @@ using System.Runtime.InteropServices;
 // [assembly: AssemblyVersion("1.0.*")]
 [assembly: AssemblyVersion("1.0.0.0")]
 [assembly: AssemblyFileVersion("1.0.0.0")]
+
+[assembly: InternalsVisibleTo("Apple.Receipt.Parser.Tests")]

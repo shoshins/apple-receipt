@@ -1,9 +1,9 @@
 ﻿using System.IO;
 using System.Linq;
 
-namespace AppleReceiptParser.Services.NodesParser
+namespace Apple.Receipt.Parser.Services.NodesParser
 {
-    public class Asn1ParserUtilitiesService : IAsn1ParserUtilitiesService
+    internal class Asn1ParserUtilitiesService : IAsn1ParserUtilitiesService
     {
         /// <summary>
         ///     Convert byte array to a <see cref="long" /> integer.

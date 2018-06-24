@@ -1,4 +1,4 @@
-﻿namespace AppleReceiptParser.Models
+﻿namespace Apple.Receipt.Parser.Models
 {
     /// <summary>
     ///     Represents ASN.1 Fields Types numbers for Apple app receipt fields.

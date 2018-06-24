@@ -1,9 +1,9 @@
-namespace AppleReceiptParser.Asn1
+namespace Apple.Receipt.Parser.Asn1
 {
     /// <summary>
     ///     Represents codes that encodes ASN1 types.
     /// </summary>
-    public class Asn1Type
+    internal class Asn1Type
     {
         public const byte Boolean = 1;
         public const byte Integer = 2;

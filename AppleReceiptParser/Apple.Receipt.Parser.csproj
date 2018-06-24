@@ -7,8 +7,8 @@
     <ProjectGuid>{EAF4C64B-0FDB-4F0D-B538-9D9608A3761C}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>AppleReceiptParser</RootNamespace>
-    <AssemblyName>AppleReceiptParser</AssemblyName>
+    <RootNamespace>Apple.Receipt.Parser</RootNamespace>
+    <AssemblyName>Apple.Receipt.Parser</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <RestoreProjectStyle>PackageReference</RestoreProjectStyle>
     <FileAlignment>512</FileAlignment>

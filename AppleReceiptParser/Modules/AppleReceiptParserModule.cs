@@ -1,9 +1,14 @@
-﻿using AppleReceiptParser.Services;
-using AppleReceiptParser.Services.NodesParser;
-using AppleReceiptParser.Services.NodesParser.Apple;
+﻿using System;
+using System.Linq;
+using System.Reflection;
+using Apple.Receipt.Parser.Services;
+using Apple.Receipt.Parser.Services.NodesParser;
+using Apple.Receipt.Parser.Services.NodesParser.Apple;
 using Autofac;
+using Autofac.Core.Activators.Reflection;
+using Module = Autofac.Module;
 
-namespace AppleReceiptParser.Modules
+namespace Apple.Receipt.Parser.Modules
 {
     public class AppleReceiptParserModule : Module
     {
@@ -15,8 +20,16 @@ namespace AppleReceiptParser.Modules
                 .As<IAsn1NodesParser>();
             builder.RegisterType<Asn1ParserUtilitiesService>()
                 .As<IAsn1ParserUtilitiesService>();
-            builder.RegisterType<AppleReceiptParserService>()
-                .As<IAppleReceiptParserService>();
+            builder.RegisterType<AppleReceiptParserService>().As<IAppleReceiptParserService>()
+                .FindConstructorsWith(new InternalConstructorFinder()).AsSelf();
+        }
+    }
+
+    public class InternalConstructorFinder : IConstructorFinder
+    {
+        public ConstructorInfo[] FindConstructors(Type t)
+        {
+            return t.GetTypeInfo().DeclaredConstructors.Where(c => !c.IsPrivate && !c.IsPublic).ToArray();
         }
     }
 }

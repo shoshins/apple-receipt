@@ -1,15 +1,12 @@
 ﻿using Apple.Receipt.Models;
+using Apple.Receipt.Verificator.Models.IAPVerification;
 
 namespace Apple.Receipt.Verificator.Models
 {
     public class AppleReceiptVerificationResult
     {
-        public string ErrorMessage { get; set; }
-        public AppleReceiptVerificationStatuses Status { get; set; }
-        public IapVerificationResultStatus? IAPVerificationStatus { get; set; }
-        public AppleAppReceipt Receipt { get; set; }
-
-        public AppleReceiptVerificationResult(string errorMessage, AppleReceiptVerificationStatuses status, IapVerificationResultStatus iapVerificationStatus, AppleAppReceipt receipt)
+        public AppleReceiptVerificationResult(string errorMessage, AppleReceiptVerificationStatuses status,
+            IapVerificationResultStatus iapVerificationStatus, AppleAppReceipt receipt)
         {
             ErrorMessage = errorMessage;
             Status = status;
@@ -24,13 +21,20 @@ namespace Apple.Receipt.Verificator.Models
             IAPVerificationStatus = null;
             Receipt = null;
         }
-        
-        public AppleReceiptVerificationResult(IapVerificationResultStatus iapVerificationStatus, AppleAppReceipt receipt, AppleReceiptVerificationStatuses status = AppleReceiptVerificationStatuses.Ok, string errorMessage = "")
+
+        public AppleReceiptVerificationResult(IapVerificationResultStatus iapVerificationStatus,
+            AppleAppReceipt receipt, AppleReceiptVerificationStatuses status = AppleReceiptVerificationStatuses.Ok,
+            string errorMessage = "")
         {
             IAPVerificationStatus = iapVerificationStatus;
             Receipt = receipt;
             Status = status;
             ErrorMessage = errorMessage;
         }
+
+        public string ErrorMessage { get; set; }
+        public AppleReceiptVerificationStatuses Status { get; set; }
+        public IapVerificationResultStatus? IAPVerificationStatus { get; set; }
+        public AppleAppReceipt Receipt { get; set; }
     }
 }

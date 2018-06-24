@@ -1,9 +1,9 @@
 ﻿using System;
-using AppleReceiptParser.Asn1;
+using Apple.Receipt.Parser.Asn1;
 
-namespace AppleReceiptParser.Services.NodesParser
+namespace Apple.Receipt.Parser.Services.NodesParser
 {
-    public interface IAsn1NodesParser
+    internal interface IAsn1NodesParser
     {
         string GetStringFromNode(Asn1Node nn);
 

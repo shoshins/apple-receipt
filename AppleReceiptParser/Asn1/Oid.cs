@@ -1,13 +1,13 @@
 using System;
 using System.IO;
 
-namespace AppleReceiptParser.Asn1
+namespace Apple.Receipt.Parser.Asn1
 {
     /// <summary>
     ///     Summary description for OID.
     ///     This class is used to encode and decode OID strings.
     /// </summary>
-    public class Oid
+    internal class Oid
     {
         /// <summary>
         ///     Decode OID byte array to OID string.

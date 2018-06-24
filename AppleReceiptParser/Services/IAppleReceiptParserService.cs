@@ -1,6 +1,6 @@
 ﻿using Apple.Receipt.Models;
 
-namespace AppleReceiptParser.Services
+namespace Apple.Receipt.Parser.Services
 {
     public interface IAppleReceiptParserService
     {

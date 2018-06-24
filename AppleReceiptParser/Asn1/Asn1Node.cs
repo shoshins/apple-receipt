@@ -1,34 +1,34 @@
 using System;
 using System.Collections;
 using System.IO;
-using AppleReceiptParser.Services.NodesParser;
+using Apple.Receipt.Parser.Services.NodesParser;
 
-namespace AppleReceiptParser.Asn1
+namespace Apple.Receipt.Parser.Asn1
 {
     /// <summary>
     ///     Asn1Node, implemented IAsn1Node interface.
     /// </summary>
-    public class Asn1Node : IAsn1Node
+    internal class Asn1Node : IAsn1Node
     {
         /// <summary>
         ///     Default Asn1Node text line length.
         /// </summary>
-        public const int DefaultLineLen = 80;
+        internal const int DefaultLineLen = 80;
 
         /// <summary>
         ///     Minium line length.
         /// </summary>
-        public const int MinLineLen = 60;
+        internal const int MinLineLen = 60;
 
         /// <summary>
         ///     Constant of tag field length.
         /// </summary>
-        public const int TagLength = 1;
+        internal const int TagLength = 1;
 
         /// <summary>
         ///     Constant of unused bits field length.
         /// </summary>
-        public const int BitStringUnusedFiledLength = 1;
+        internal const int BitStringUnusedFiledLength = 1;
 
         private ArrayList _childNodeList;
         private byte[] _data;
@@ -52,7 +52,7 @@ namespace AppleReceiptParser.Asn1
         /// <summary>
         ///     Constructor, initialize all the members.
         /// </summary>
-        public Asn1Node()
+        internal Asn1Node()
         {
             Init();
             _dataOffset = 0;
@@ -215,7 +215,7 @@ namespace AppleReceiptParser.Asn1
         /// <param name="oid">OID.</param>
         /// <param name="startNode">Starting node.</param>
         /// <returns>Null or Asn1Node.</returns>
-        public static Asn1Node GetDecendantNodeByOid(string oid, Asn1Node startNode)
+        internal static Asn1Node GetDecendantNodeByOid(string oid, Asn1Node startNode)
         {
             Asn1Node retval = null;
             Oid xoid = new Oid();

@@ -4,7 +4,7 @@ using Apple.Receipt.Verificator.Services;
 
 namespace Apple.Receipt.Verificator.Tests
 {
-    public class AppleReceiptCustomVerificatorService: IAppleReceiptCustomVerificatorService
+    public class AppleReceiptCustomVerificatorService : IAppleReceiptCustomVerificatorService
     {
         public AppleReceiptVerificationResult ValidateReceipt(AppleAppReceipt receipt)
         {

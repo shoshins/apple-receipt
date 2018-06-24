@@ -3,34 +3,63 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using Apple.Receipt.Models;
-using AppleReceiptParser.Modules;
-using AppleReceiptParser.Services;
-using AppleReceiptParser.Services.NodesParser;
-using AppleReceiptParser.Services.NodesParser.Apple;
+using Apple.Receipt.Parser.Modules;
+using Apple.Receipt.Parser.Services;
+using Apple.Receipt.Parser.Services.NodesParser;
+using Apple.Receipt.Parser.Services.NodesParser.Apple;
 using Autofac;
 using Autofac.Builder;
 using NUnit.Framework;
 
-namespace AppleReceiptParser.Tests
+namespace Apple.Receipt.Parser.Tests
 {
     [TestFixture]
     public class ParserTest
     {
-        private IContainer _container;
-
         [SetUp]
         public void TestFixtureSetUp()
         {
-            var containerBuilder = new ContainerBuilder();
-            var module = new AppleReceiptParserModule();
+            ContainerBuilder containerBuilder = new ContainerBuilder();
+            AppleReceiptParserModule module = new AppleReceiptParserModule();
             containerBuilder.RegisterModule(module);
             _container = containerBuilder.Build(ContainerBuildOptions.IgnoreStartableComponents);
         }
+
+        [TearDown]
+        public void TestFixtureTearDown()
+        {
+            _container.Dispose();
+        }
+
+        private IContainer _container;
 
         [TestCaseSource(typeof(TypesExpectedToBeRegisteredTestCaseSource))]
         public void CheckAutofacRegistration(Type type)
         {
             Assert.IsTrue(_container.IsRegistered(type));
+        }
+
+        private class TypesExpectedToBeRegisteredTestCaseSource : IEnumerable<object[]>
+        {
+            public IEnumerator<object[]> GetEnumerator()
+            {
+                return Types()
+                    .Select(type => new object[] {type})
+                    .GetEnumerator();
+            }
+
+            IEnumerator IEnumerable.GetEnumerator()
+            {
+                return GetEnumerator();
+            }
+
+            private IEnumerable<Type> Types()
+            {
+                yield return typeof(IAppleAsn1NodesParser);
+                yield return typeof(IAppleReceiptParserService);
+                yield return typeof(IAsn1NodesParser);
+                yield return typeof(IAsn1ParserUtilitiesService);
+            }
         }
 
         [Test]
@@ -60,35 +89,6 @@ namespace AppleReceiptParser.Tests
             {
                 throw new Exception("Not parsed");
             }
-        }
-
-        private class TypesExpectedToBeRegisteredTestCaseSource : IEnumerable<object[]>
-        {
-            private IEnumerable<Type> Types()
-            {
-                yield return typeof(IAppleAsn1NodesParser);
-                yield return typeof(IAppleReceiptParserService);
-                yield return typeof(IAsn1NodesParser);
-                yield return typeof(IAsn1ParserUtilitiesService);
-            }
-
-            public IEnumerator<object[]> GetEnumerator()
-            {
-                return Types()
-                    .Select(type => new object[] { type })
-                    .GetEnumerator();
-            }
-
-            IEnumerator IEnumerable.GetEnumerator()
-            {
-                return GetEnumerator();
-            }
-        }
-
-        [TearDown]
-        public void TestFixtureTearDown()
-        {
-            _container.Dispose();
         }
     }
 }

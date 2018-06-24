@@ -1,11 +1,11 @@
 ﻿using System.IO;
 
-namespace AppleReceiptParser.Asn1
+namespace Apple.Receipt.Parser.Asn1
 {
     /// <summary>
     ///     IAsn1Node interface.
     /// </summary>
-    public interface IAsn1Node
+    internal interface IAsn1Node
     {
         /// <summary>
         ///     Get parent node.

@@ -1,14 +1,14 @@
 ﻿using System;
 using System.Threading.Tasks;
 using Apple.Receipt.Models;
+using Apple.Receipt.Parser.Services;
 using Apple.Receipt.Verificator.Models;
-using AppleReceiptParser.Services;
-using Futhark.Gyfu.Data.Models.Checkout.Apple.Verification;
+using Apple.Receipt.Verificator.Models.IAPVerification;
 using Serilog;
 
 namespace Apple.Receipt.Verificator.Services
 {
-    public class AppleReceiptVerificatorService : IAppleReceiptVerificatorService
+    internal class AppleReceiptVerificatorService : IAppleReceiptVerificatorService
     {
         private readonly IAppleReceiptCustomVerificatorService _customValidation;
         private readonly ILogger _log;

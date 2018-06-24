@@ -1,9 +1,9 @@
 ﻿using Apple.Receipt.Models;
-using AppleReceiptParser.Asn1;
+using Apple.Receipt.Parser.Asn1;
 
-namespace AppleReceiptParser.Services.NodesParser.Apple
+namespace Apple.Receipt.Parser.Services.NodesParser.Apple
 {
-    public interface IAppleAsn1NodesParser
+    internal interface IAppleAsn1NodesParser
     {
         AppleAppReceipt GetAppleReceiptFromNode(Asn1Node tNode, AppleAppReceipt receipt = null);
     }

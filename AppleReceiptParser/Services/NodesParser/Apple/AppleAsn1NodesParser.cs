@@ -1,11 +1,11 @@
 ﻿using System.Linq;
 using Apple.Receipt.Models;
-using AppleReceiptParser.Asn1;
-using AppleReceiptParser.Models;
+using Apple.Receipt.Parser.Asn1;
+using Apple.Receipt.Parser.Models;
 
-namespace AppleReceiptParser.Services.NodesParser.Apple
+namespace Apple.Receipt.Parser.Services.NodesParser.Apple
 {
-    public class AppleAsn1NodesParser : IAppleAsn1NodesParser
+    internal class AppleAsn1NodesParser : IAppleAsn1NodesParser
     {
         private readonly IAsn1NodesParser _nodesParser;
         private readonly IAsn1ParserUtilitiesService _utilities;

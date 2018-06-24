@@ -1,16 +1,16 @@
 ﻿using Apple.Receipt.Models;
-using AppleReceiptParser.Asn1;
-using AppleReceiptParser.Services.NodesParser;
-using AppleReceiptParser.Services.NodesParser.Apple;
+using Apple.Receipt.Parser.Asn1;
+using Apple.Receipt.Parser.Services.NodesParser;
+using Apple.Receipt.Parser.Services.NodesParser.Apple;
 
-namespace AppleReceiptParser.Services
+namespace Apple.Receipt.Parser.Services
 {
-    public class AppleReceiptParserService : IAppleReceiptParserService
+    internal class AppleReceiptParserService : IAppleReceiptParserService
     {
         private readonly IAppleAsn1NodesParser _appleNodesParser;
         private readonly IAsn1NodesParser _nodesParser;
 
-        public AppleReceiptParserService(IAppleAsn1NodesParser appleNodesParser, IAsn1NodesParser nodesParser)
+        internal AppleReceiptParserService(IAppleAsn1NodesParser appleNodesParser, IAsn1NodesParser nodesParser)
         {
             _appleNodesParser = appleNodesParser;
             _nodesParser = nodesParser;

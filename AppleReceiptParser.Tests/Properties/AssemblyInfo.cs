@@ -1,13 +1,13 @@
 using System.Reflection;
 using System.Runtime.InteropServices;
 
-[assembly: AssemblyTitle("AppleReceiptParser.Tests")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyTitle("Apple.Receipt.Parser.Tests")]
+[assembly: AssemblyDescription("NUnit Tests for Apple.Receipt.Parser library")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("AppleReceiptParser.Tests")]
-[assembly: AssemblyCopyright("Copyright ©  2018")]
-[assembly: AssemblyTrademark("")]
+[assembly: AssemblyCompany("Sergey Shoshin")]
+[assembly: AssemblyProduct("Apple.Receipt.Parser.Tests")]
+[assembly: AssemblyCopyright("Copyright © Sergey Shoshin 2018")]
+[assembly: AssemblyTrademark("Sergey Shoshin")]
 [assembly: AssemblyCulture("")]
 
 [assembly: ComVisible(false)]

@@ -1,9 +1,9 @@
-﻿namespace AppleReceiptParser.Asn1
+﻿namespace Apple.Receipt.Parser.Asn1
 {
     /// <summary>
     ///     Define ASN.1 tag class constants.
     /// </summary>
-    public class Asn1Tag
+    internal class Asn1Tag
     {
         public const byte Universal = 0;
         public const byte Constructed = 32;
