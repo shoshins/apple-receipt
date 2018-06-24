@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27703.2026
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Apple.Receipt.Parser", "AppleReceiptParser\Apple.Receipt.Parser.csproj", "{EAF4C64B-0FDB-4F0D-B538-9D9608A3761C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Apple.Receipt.Parser", "Apple.Receipt.Parser\Apple.Receipt.Parser.csproj", "{EAF4C64B-0FDB-4F0D-B538-9D9608A3761C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Apple.Receipt.Parser.Tests", "AppleReceiptParser.Tests\Apple.Receipt.Parser.Tests.csproj", "{A4DD9314-712E-42EC-BDB9-1178537F7278}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Apple.Receipt.Parser.Tests", "Apple.Receipt.Parser.Tests\Apple.Receipt.Parser.Tests.csproj", "{A4DD9314-712E-42EC-BDB9-1178537F7278}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Apple.Receipt.Models", "Apple.Receipt.Models\Apple.Receipt.Models.csproj", "{B8EF58F0-F53B-4D06-B8FD-ABCF5F8491EB}"
 EndProject
