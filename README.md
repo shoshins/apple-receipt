@@ -1,7 +1,7 @@
 # Project status
-| Branch | Build        | Quality | Coverage | 
-| ------------- | ------------- | ------------- | ----- |
-| master | ![Build Status](https://shoshins.visualstudio.com/_apis/public/build/definitions/3ee635a9-029b-40d9-a9b6-93cc7737dbf9/1/badge)      | ![Code Quality](https://sonarcloud.io/api/project_badges/measure?project=apple-receipt-parser&metric=alert_status)| ![Code Coverage](https://sonarcloud.io/api/project_badges/measure?project=apple-receipt-parser&metric=coverage) |
+| Branch | Build        | Quality | 
+| ------------- | ------------- | ------------- |
+| master | ![Build Status](https://shoshins.visualstudio.com/_apis/public/build/definitions/3ee635a9-029b-40d9-a9b6-93cc7737dbf9/1/badge)      | ![Code Quality](https://sonarcloud.io/api/project_badges/measure?project=apple-receipt-parser&metric=alert_status) |
 
 # Nuget Packages Information
 
@@ -16,7 +16,7 @@ https://www.nuget.org/packages/Apple.Receipt.Models/
 
 | Version | Downloads |
 | ------------- | ------------- |
-| [![NuGet](https://img.shields.io/nuget/v/Apple.Receipt.Models.svg)](https://www.nuget.org/packages/Apple.Receipt.Models/) | [![NuGet](https://img.shields.io/nuget/dt/Apple.Receipt.Models.svg)](Apple.Receipt.Models) |
+| ![NuGet](https://img.shields.io/nuget/v/Apple.Receipt.Models.svg) | ![NuGet](https://img.shields.io/nuget/dt/Apple.Receipt.Models.svg) |
 
 ### Installation:
 * (Package manager): ```Install-Package Apple.Receipt.Models -Version 1.0.0```
@@ -34,7 +34,7 @@ https://www.nuget.org/packages/Apple.Receipt.Parser/
 
 | Version | Downloads |
 | ------------- | ------------- |
-| [![NuGet](https://img.shields.io/nuget/v/Apple.Receipt.Parser.svg)](https://www.nuget.org/packages/Apple.Receipt.Parser/) | [![NuGet](https://img.shields.io/nuget/dt/Apple.Receipt.Parser.svg)](Apple.Receipt.Parser) |
+| ![NuGet](https://img.shields.io/nuget/v/Apple.Receipt.Parser.svg) | ![NuGet](https://img.shields.io/nuget/dt/Apple.Receipt.Parser.svg) |
 
 ### Installation:
 * (Package manager): ```Install-Package Apple.Receipt.Parser -Version 1.1.1```
@@ -53,7 +53,7 @@ https://www.nuget.org/packages/Apple.Receipt.Verificator/
 
 | Version | Downloads |
 | ------------- | ------------- |
-| [![NuGet](https://img.shields.io/nuget/v/Apple.Receipt.Verificator.svg)](https://www.nuget.org/packages/Apple.Receipt.Verificator/) | [![NuGet](https://img.shields.io/nuget/dt/Apple.Receipt.Verificator.svg)](Apple.Receipt.Verificator) |
+| ![NuGet](https://img.shields.io/nuget/v/Apple.Receipt.Verificator.svg) | ![NuGet](https://img.shields.io/nuget/dt/Apple.Receipt.Verificator.svg) |
 
 ### Installation:
 * (Package manager): ```Install-Package Apple.Receipt.Verificator -Version 1.0.0```
