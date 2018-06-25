@@ -19,9 +19,9 @@ Describes strongly-type representation of Apple Receipt Object.
 | ![NuGet](https://img.shields.io/nuget/v/Apple.Receipt.Models.svg) | ![NuGet](https://img.shields.io/nuget/dt/Apple.Receipt.Models.svg) |
 
 ### Installation:
-* (Package manager): ```Install-Package Apple.Receipt.Models -Version 1.0.0```
-* (.Net CI): ```dotnet add package Apple.Receipt.Models --version 1.0.0```
-* (Packet CLI): ```paket add Apple.Receipt.Models --version 1.0.0```
+* (Package manager): ```Install-Package Apple.Receipt.Models```
+* (.Net CI): ```dotnet add package Apple.Receipt.Models```
+* (Packet CLI): ```paket add Apple.Receipt.Models```
 
 ## Apple Receipt Parser
 
@@ -37,9 +37,26 @@ Parser for Apple Receipt that represented in base64 and encoded with ASN.1
 | ![NuGet](https://img.shields.io/nuget/v/Apple.Receipt.Parser.svg) | ![NuGet](https://img.shields.io/nuget/dt/Apple.Receipt.Parser.svg) |
 
 ### Installation:
-* (Package manager): ```Install-Package Apple.Receipt.Parser -Version 1.1.1```
-* (.Net CI): ```dotnet add package Apple.Receipt.Parser --version 1.1.1```
-* (Packet CLI): ```paket add Apple.Receipt.Parser --version 1.1.1```
+* (Package manager): ```Install-Package Apple.Receipt.Parser```
+* (.Net CI): ```dotnet add package Apple.Receipt.Parser```
+* (Packet CLI): ```paket add Apple.Receipt.Parser```
+
+### How to use:
+```
+
+// Register DI module...
+builder.RegisterModule<AppleReceiptParserModule>();
+...
+// ... and resolve the service later.
+IAppleReceiptParserService parserService;
+...
+// Get your base64 Apple Receipt
+const string appleAppReceipt = "{receipt_base64_string}";
+// Convert to Bytes
+byte[] data = Convert.FromBase64String(appleAppReceipt);
+// Get parsed receipt
+AppleAppReceipt receipt = parserService.GetAppleReceiptFromBytes(data);
+```
 
 ## Apple Receipt Verificator
 
@@ -56,6 +73,29 @@ Two step verification: pre-validation that can be customized and App Store verif
 | ![NuGet](https://img.shields.io/nuget/v/Apple.Receipt.Verificator.svg) | ![NuGet](https://img.shields.io/nuget/dt/Apple.Receipt.Verificator.svg) |
 
 ### Installation:
-* (Package manager): ```Install-Package Apple.Receipt.Verificator -Version 1.0.0```
-* (.Net CI): ```dotnet add package Apple.Receipt.Verificator --version 1.0.0```
-* (Packet CLI): ```paket add Apple.Receipt.Verificator --version 1.0.0```
+* (Package manager): ```Install-Package Apple.Receipt.Verificator```
+* (.Net CI): ```dotnet add package Apple.Receipt.Verificator ```
+* (Packet CLI): ```paket add Apple.Receipt.Verificator```
+
+### How to use:
+```
+// (Optional) You can create implementation of custom validation process:
+containerBuilder.RegisterType<AppleReceiptCustomVerificatorService>()
+                .As<IAppleReceiptCustomVerificatorService>();
+...
+// Fill settings:
+            AppleReceiptVerificationSettings settings = new AppleReceiptVerificationSettings(
+            "XXXX", // Apple Shared Secret Key
+            AppleReceiptVerificationType.Sandbox, // Verification Type: Sandbox / Production
+            new[] {"com.mbaasy.ios.demo"}, // Array with allowed bundle ids
+                new LoggerConfiguration(), // Serilog configuration
+                true); // Enabled / Disabled logger registration (use it when you already configured serilog in application)
+// Register DI module...
+AppleReceiptVerificatorModule module = new AppleReceiptVerificatorModule(settings);
+            containerBuilder.RegisterModule(module);
+...
+// ... and resolve the service later.
+IAppleReceiptVerificatorService verificator;
+...
+AppleReceiptVerificationResult result = await verificator.VerifyAppleReceiptAsync(appleAppReceipt);
+```
