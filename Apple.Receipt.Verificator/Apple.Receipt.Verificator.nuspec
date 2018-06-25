@@ -2,16 +2,16 @@
 <package >
   <metadata>
     <id>Apple.Receipt.Verificator</id>
-    <version>1.0.0</version>
+    <version>1.0.1</version>
     <title>Apple.Receipt.Verificator</title>
-    <authors>sergeys</authors>
-    <owners>sergeys</owners>
+    <authors>Sergey Shoshin</authors>
+    <owners>Sergey Shoshin</owners>
     <licenseUrl>https://github.com/shoshins/apple-receipt/blob/master/LICENSE</licenseUrl>
     <projectUrl>https://github.com/shoshins/apple-receipt</projectUrl>
     <iconUrl>https://raw.githubusercontent.com/shoshins/apple-receipt/master/icon.png</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Library for validating receipts with the App Store</description>
-    <releaseNotes>Basic Apple Receipt Validator. Two step verification: pre-validation that can be customized and App Store verification.</releaseNotes>
+    <releaseNotes>Models and initialization improved</releaseNotes>
     <copyright>Copyright Sergey Shoshin 2018</copyright>
     <tags>Apple Receipt Validation AppStore</tags>
   </metadata>

@@ -11,7 +11,7 @@
     ///     display an alternative subscription product in your app, for example, a lower level subscription plan that the
     ///     customer can downgrade to from their current plan.
     /// </remarks>
-    public enum AppleSubscriptionAutoRenewStatuses
+    public enum AppleSubscriptionAutoRenewStatus
     {
         /// <summary>
         ///     “0” - Customer has turned off automatic renewal for their subscription.

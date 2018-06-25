@@ -8,7 +8,7 @@
     ///     because the App Store was unable to complete the transaction, this value will reflect whether or not the App Store
     ///     is still trying to renew the subscription.
     /// </remarks>
-    public enum AppleBillingRetryPeriods
+    public enum AppleBillingRetryPeriod
     {
         /// <summary>
         ///     “0” - App Store has stopped attempting to renew the subscription.

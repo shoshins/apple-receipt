@@ -124,18 +124,18 @@ namespace Apple.Receipt.Models
 
         /// <summary>
         ///     For an expired subscription, the reason for the subscription expiration.
-        ///     More info in <see cref="AppleExpirationIntents" />
+        ///     More info in <see cref="AppleExpirationIntent" />
         /// </summary>
         /// <remarks>
         ///     This key is only present for a receipt containing an expired auto-renewable subscription. You can use this value to
         ///     decide whether to display appropriate messaging in your app for customers to resubscribe.
         /// </remarks>
         [JsonProperty("expiration_intent")]
-        public AppleExpirationIntents ExpirationIntent { get; set; }
+        public AppleExpirationIntent ExpirationIntent { get; set; }
 
         /// <summary>
         ///     For an expired subscription, whether or not Apple is still attempting to automatically renew the subscription.
-        ///     More info in <see cref="AppleBillingRetryPeriods" />
+        ///     More info in <see cref="AppleBillingRetryPeriod" />
         /// </summary>
         /// <remarks>
         ///     This key is only present for auto-renewable subscription receipts. If the customer’s subscription failed to renew
@@ -143,7 +143,7 @@ namespace Apple.Receipt.Models
         ///     is still trying to renew the subscription.
         /// </remarks>
         [JsonProperty("is_in_billing_retry_period")]
-        public AppleBillingRetryPeriods IsInBillingRetryPeriod { get; set; }
+        public AppleBillingRetryPeriod IsInBillingRetryPeriod { get; set; }
 
         /// <summary>
         ///     For a subscription, whether or not it is in the free trial period.
@@ -191,14 +191,14 @@ namespace Apple.Receipt.Models
 
         /// <summary>
         ///     For a transaction that was canceled, the reason for cancellation.
-        ///     More info in <see cref="AppleCancellationReasons" />.
+        ///     More info in <see cref="AppleCancellationReason" />.
         /// </summary>
         /// <remarks>
         ///     Use this value along with the cancellation date to identify possible issues in your app that may lead customers to
         ///     contact Apple customer support.
         /// </remarks>
         [JsonProperty("cancellation_reason")]
-        public AppleCancellationReasons CancellationReason { get; set; }
+        public AppleCancellationReason CancellationReason { get; set; }
 
         /// <summary>
         ///     A string that the App Store uses to uniquely identify the application that created the transaction.
@@ -231,7 +231,7 @@ namespace Apple.Receipt.Models
 
         /// <summary>
         ///     The current renewal status for the auto-renewable subscription.
-        ///     More info in <see cref="AppleSubscriptionAutoRenewStatuses" />.
+        ///     More info in <see cref="AppleSubscriptionAutoRenewStatus" />.
         /// </summary>
         /// <remarks>
         ///     This key is only present for auto-renewable subscription receipts, for active or expired subscriptions.
@@ -242,7 +242,7 @@ namespace Apple.Receipt.Models
         ///     customer can downgrade to from their current plan.
         /// </remarks>
         [JsonProperty("auto_renew_status")]
-        public AppleSubscriptionAutoRenewStatuses SubscriptionAutoRenewStatus { get; set; }
+        public AppleSubscriptionAutoRenewStatus SubscriptionAutoRenewStatus { get; set; }
 
         /// <summary>
         ///     The current renewal preference for the auto-renewable subscription.
@@ -270,7 +270,7 @@ namespace Apple.Receipt.Models
         ///     You can use this value to track customer adoption of the new price and take appropriate action.
         /// </remarks>
         [JsonProperty("price_consent_status")]
-        public AppleSubscriptionPriceConsentStatuses SubscriptionPriceConsentStatus { get; set; }
+        public AppleSubscriptionPriceConsentStatus SubscriptionPriceConsentStatus { get; set; }
 
         #region Internal things
 

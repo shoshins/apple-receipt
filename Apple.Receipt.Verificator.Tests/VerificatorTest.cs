@@ -24,7 +24,7 @@ namespace Apple.Receipt.Verificator.Tests
             containerBuilder.RegisterType<AppleReceiptCustomVerificatorService>()
                 .As<IAppleReceiptCustomVerificatorService>();
             AppleReceiptVerificationSettings settings = new AppleReceiptVerificationSettings("XXXX",
-                "https://sandbox.itunes.apple.com/verifyReceipt", new[] {"com.mbaasy.ios.demo"},
+                AppleReceiptVerificationType.Sandbox, new[] {"com.mbaasy.ios.demo"},
                 new LoggerConfiguration(), true);
             AppleReceiptVerificatorModule module = new AppleReceiptVerificatorModule(settings);
             containerBuilder.RegisterModule(module);
@@ -73,8 +73,7 @@ namespace Apple.Receipt.Verificator.Tests
             IAppleReceiptVerificatorService verificator = _container.Resolve<IAppleReceiptVerificatorService>();
             AppleReceiptVerificationResult result = await verificator.VerifyAppleReceiptAsync(appleAppReceipt);
             Assert.IsTrue(result != null);
-            Assert.IsTrue(result.Status == AppleReceiptVerificationStatuses.IAPVerificationFailed);
-            Assert.IsTrue(result.IAPVerificationStatus == IapVerificationResultStatus.SharedSecretWrong);
+            Assert.IsTrue(result.Status == IapVerificationResultStatus.SharedSecretWrong);
         }
     }
 }

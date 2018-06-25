@@ -29,6 +29,13 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>false</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>
+    </AssemblyOriginatorKeyFile>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.11.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
@@ -45,15 +52,17 @@
   <ItemGroup>
     <Compile Include="AppleAppReceipt.cs" />
     <Compile Include="AppleInAppPurchaseReceipt.cs" />
-    <Compile Include="Enums\AppleBillingRetryPeriods.cs" />
-    <Compile Include="Enums\AppleCancellationReasons.cs" />
-    <Compile Include="Enums\AppleExpirationIntents.cs" />
-    <Compile Include="Enums\AppleSubscriptionAutoRenewStatuses.cs" />
-    <Compile Include="Enums\AppleSubscriptionPriceConsentStatuses.cs" />
+    <Compile Include="Enums\AppleBillingRetryPeriod.cs" />
+    <Compile Include="Enums\AppleCancellationReason.cs" />
+    <Compile Include="Enums\AppleExpirationIntent.cs" />
+    <Compile Include="Enums\AppleSubscriptionAutoRenewStatus.cs" />
+    <Compile Include="Enums\AppleSubscriptionPriceConsentStatus.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="packages.config" />
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

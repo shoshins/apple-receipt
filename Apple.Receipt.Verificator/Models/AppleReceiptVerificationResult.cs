@@ -5,36 +5,32 @@ namespace Apple.Receipt.Verificator.Models
 {
     public class AppleReceiptVerificationResult
     {
-        public AppleReceiptVerificationResult(string errorMessage, AppleReceiptVerificationStatuses status,
-            IapVerificationResultStatus iapVerificationStatus, AppleAppReceipt receipt)
+        public AppleReceiptVerificationResult(string errorMessage, IapVerificationResultStatus status,
+            AppleAppReceipt receipt)
         {
-            ErrorMessage = errorMessage;
+            Message = errorMessage;
             Status = status;
-            IAPVerificationStatus = iapVerificationStatus;
             Receipt = receipt;
         }
 
-        public AppleReceiptVerificationResult(string errorMessage, AppleReceiptVerificationStatuses status)
+        public AppleReceiptVerificationResult(string message, IapVerificationResultStatus status)
         {
-            ErrorMessage = errorMessage;
+            Message = message;
             Status = status;
-            IAPVerificationStatus = null;
             Receipt = null;
         }
 
-        public AppleReceiptVerificationResult(IapVerificationResultStatus iapVerificationStatus,
-            AppleAppReceipt receipt, AppleReceiptVerificationStatuses status = AppleReceiptVerificationStatuses.Ok,
-            string errorMessage = "")
+        public AppleReceiptVerificationResult(IapVerificationResultStatus status,
+            AppleAppReceipt receipt,
+            string message)
         {
-            IAPVerificationStatus = iapVerificationStatus;
             Receipt = receipt;
             Status = status;
-            ErrorMessage = errorMessage;
+            Message = message;
         }
 
-        public string ErrorMessage { get; set; }
-        public AppleReceiptVerificationStatuses Status { get; set; }
-        public IapVerificationResultStatus? IAPVerificationStatus { get; set; }
+        public string Message { get; set; }
+        public IapVerificationResultStatus? Status { get; set; }
         public AppleAppReceipt Receipt { get; set; }
     }
 }

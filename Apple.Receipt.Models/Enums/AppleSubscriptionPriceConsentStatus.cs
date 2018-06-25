@@ -10,7 +10,7 @@
     /// <remarks>
     ///     You can use this value to track customer adoption of the new price and take appropriate action.
     /// </remarks>
-    public enum AppleSubscriptionPriceConsentStatuses
+    public enum AppleSubscriptionPriceConsentStatus
     {
         /// <summary>
         ///     “0” - Customer has not taken action regarding the increased price. Subscription expires if the customer takes no

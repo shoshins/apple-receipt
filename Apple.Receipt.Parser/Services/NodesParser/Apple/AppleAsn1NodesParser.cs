@@ -34,28 +34,28 @@ namespace Apple.Receipt.Parser.Services.NodesParser.Apple
                     (node3.Tag & Asn1Type.Date) == Asn1Type.OctetString)
                 {
                     processedNode = true;
-                    AppReceiptAsnTypes type = (AppReceiptAsnTypes) _utilities.BytesToLong(node1.Data);
+                    AppReceiptAsnType type = (AppReceiptAsnType) _utilities.BytesToLong(node1.Data);
                     switch (type)
                     {
-                        case AppReceiptAsnTypes.BundleIdentifier:
+                        case AppReceiptAsnType.BundleIdentifier:
                             receipt.BundleId = _nodesParser.GetStringFromNode(node3);
                             break;
-                        case AppReceiptAsnTypes.AppVersion:
+                        case AppReceiptAsnType.AppVersion:
                             receipt.ApplicationVersion = _nodesParser.GetStringFromNode(node3);
                             break;
-                        case AppReceiptAsnTypes.OpaqueValue:
+                        case AppReceiptAsnType.OpaqueValue:
                             break;
-                        case AppReceiptAsnTypes.Hash:
+                        case AppReceiptAsnType.Hash:
                             break;
-                        case AppReceiptAsnTypes.OriginalAppVersion:
+                        case AppReceiptAsnType.OriginalAppVersion:
                             receipt.OriginalApplicationVersion = _nodesParser.GetStringFromNode(node3);
                             break;
-                        case AppReceiptAsnTypes.ReceiptExpirationDate:
+                        case AppReceiptAsnType.ReceiptExpirationDate:
                             break;
-                        case AppReceiptAsnTypes.ReceiptCreationDate:
+                        case AppReceiptAsnType.ReceiptCreationDate:
                             receipt.ReceiptCreationDateMs = _nodesParser.GetDateTimeMsFromNode(node3);
                             break;
-                        case AppReceiptAsnTypes.InAppPurchaseReceipt:
+                        case AppReceiptAsnType.InAppPurchaseReceipt:
                         {
                             if (node3.ChildNodeCount > 0)
                             {
@@ -77,47 +77,47 @@ namespace Apple.Receipt.Parser.Services.NodesParser.Apple
                                                 (node3112.Tag & Asn1Type.Date) == Asn1Type.Integer &&
                                                 (node3113.Tag & Asn1Type.Date) == Asn1Type.OctetString)
                                             {
-                                                AppReceiptAsnTypes type1 =
-                                                    (AppReceiptAsnTypes) _utilities.BytesToLong(node3111.Data);
+                                                AppReceiptAsnType type1 =
+                                                    (AppReceiptAsnType) _utilities.BytesToLong(node3111.Data);
                                                 switch (type1)
                                                 {
-                                                    case AppReceiptAsnTypes.Quantity:
+                                                    case AppReceiptAsnType.Quantity:
                                                         purchaseReceipt.Quantity = _nodesParser
                                                             .GetIntegerFromNode(node3113).ToString();
                                                         break;
-                                                    case AppReceiptAsnTypes.ProductIdentifier:
+                                                    case AppReceiptAsnType.ProductIdentifier:
                                                         purchaseReceipt.ProductId =
                                                             _nodesParser.GetStringFromNode(node3113);
                                                         break;
-                                                    case AppReceiptAsnTypes.TransactionIdentifier:
+                                                    case AppReceiptAsnType.TransactionIdentifier:
                                                         purchaseReceipt.TransactionId =
                                                             _nodesParser.GetStringFromNode(node3113);
                                                         break;
-                                                    case AppReceiptAsnTypes.PurchaseDate:
+                                                    case AppReceiptAsnType.PurchaseDate:
                                                         purchaseReceipt.PurchaseDateMs =
                                                             _nodesParser.GetDateTimeMsFromNode(node3113);
                                                         break;
-                                                    case AppReceiptAsnTypes.OriginalTransactionIdentifier:
+                                                    case AppReceiptAsnType.OriginalTransactionIdentifier:
                                                         purchaseReceipt.OriginalTransactionId =
                                                             _nodesParser.GetStringFromNode(node3113);
                                                         break;
-                                                    case AppReceiptAsnTypes.OriginalPurchaseDate:
+                                                    case AppReceiptAsnType.OriginalPurchaseDate:
                                                         purchaseReceipt.OriginalPurchaseDateMs =
                                                             _nodesParser.GetDateTimeMsFromNode(node3113);
                                                         break;
-                                                    case AppReceiptAsnTypes.SubscriptionExpirationDate:
+                                                    case AppReceiptAsnType.SubscriptionExpirationDate:
                                                         purchaseReceipt.ExpirationDateMs =
                                                             _nodesParser.GetDateTimeMsFromNode(node3113);
                                                         break;
-                                                    case AppReceiptAsnTypes.WebOrderLineItemId:
+                                                    case AppReceiptAsnType.WebOrderLineItemId:
                                                         purchaseReceipt.WebOrderLineItemId =
                                                             _nodesParser.GetStringFromNode(node3113);
                                                         break;
-                                                    case AppReceiptAsnTypes.CancellationDate:
+                                                    case AppReceiptAsnType.CancellationDate:
                                                         purchaseReceipt.CancellationDate =
                                                             _nodesParser.GetDateTimeFromNode(node3113);
                                                         break;
-                                                    case AppReceiptAsnTypes.SubscriptionIntroductoryPricePeriod:
+                                                    case AppReceiptAsnType.SubscriptionIntroductoryPricePeriod:
                                                         purchaseReceipt.IsInIntroOfferPeriod =
                                                             _nodesParser.GetBoolFromNode(node3113);
                                                         break;

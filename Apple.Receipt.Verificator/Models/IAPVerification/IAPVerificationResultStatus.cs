@@ -6,6 +6,21 @@
     public enum IapVerificationResultStatus
     {
         /// <summary>
+        ///     Internal Verification. Something went wrong due verification process.
+        /// </summary>
+        InternalVerificationBroken = -102,
+
+        /// <summary>
+        ///     Internal Verification. Internal Verification failed.
+        /// </summary>
+        InternalVerificationFailed = -101,
+
+        /// <summary>
+        ///     Internal Verification. Wrong argument
+        /// </summary>
+        WrongArgument = -100,
+
+        /// <summary>
         ///     Everything is OK
         /// </summary>
         Ok = 0,

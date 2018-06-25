@@ -7,7 +7,7 @@
     ///     Use this value along with the cancellation date to identify possible issues in your app that may lead customers to
     ///     contact Apple customer support.
     /// </remarks>
-    public enum AppleCancellationReasons
+    public enum AppleCancellationReason
     {
         /// <summary>
         ///     “0” - Transaction was canceled for another reason, for example, if the customer made the purchase accidentally.

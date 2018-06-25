@@ -2,16 +2,16 @@
 <package >
   <metadata>
     <id>Apple.Receipt.Models</id>
-    <version>1.0.0</version>
+    <version>1.0.2</version>
     <title>Apple.Receipt.Models</title>
-    <authors>sergeys</authors>
-    <owners>sergeys</owners>
+    <authors>Sergey Shoshin</authors>
+    <owners>Sergey Shoshin</owners>
     <licenseUrl>https://github.com/shoshins/apple-receipt/blob/master/LICENSE</licenseUrl>
     <projectUrl>https://github.com/shoshins/apple-receipt</projectUrl>
     <iconUrl>https://raw.githubusercontent.com/shoshins/apple-receipt/master/icon.png</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Describes Apple Receipt Models</description>
-    <releaseNotes>Basic Apple Receipt Models</releaseNotes>
+    <releaseNotes>Models improved</releaseNotes>
     <copyright>Copyright Sergey Shoshin 2018</copyright>
     <tags>Apple Receipt Models</tags>
   </metadata>

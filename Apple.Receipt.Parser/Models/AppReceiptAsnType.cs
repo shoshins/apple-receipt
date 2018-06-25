@@ -3,7 +3,7 @@
     /// <summary>
     ///     Represents ASN.1 Fields Types numbers for Apple app receipt fields.
     /// </summary>
-    internal enum AppReceiptAsnTypes
+    internal enum AppReceiptAsnType
     {
         /// <summary>
         ///     The app’s bundle identifier.

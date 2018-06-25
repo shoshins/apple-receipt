@@ -7,7 +7,7 @@
     ///     This key is only present for a receipt containing an expired auto-renewable subscription. You can use this value to
     ///     decide whether to display appropriate messaging in your app for customers to resubscribe.
     /// </remarks>
-    public enum AppleExpirationIntents
+    public enum AppleExpirationIntent
     {
         /// <summary>
         ///     “1” - Customer canceled their subscription.

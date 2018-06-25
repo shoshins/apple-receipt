@@ -26,9 +26,12 @@ namespace Apple.Receipt.Verificator.Modules
             }
             builder.Register(c =>
                 {
+                    string verificationUrl = _settings.VerificationType == AppleReceiptVerificationType.Sandbox
+                        ? "https://sandbox.itunes.apple.com/verifyReceipt"
+                        : "https://buy.itunes.apple.com/verifyReceipt";
                     HttpClient httpClient = new HttpClient
                     {
-                        BaseAddress = new Uri(_settings.VerifyReceiptUrl)
+                        BaseAddress = new Uri(verificationUrl)
                     };
                     return RestService.For<IRestService>(httpClient);
                 })

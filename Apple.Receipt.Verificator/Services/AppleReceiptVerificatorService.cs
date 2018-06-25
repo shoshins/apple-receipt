@@ -35,7 +35,7 @@ namespace Apple.Receipt.Verificator.Services
             {
                 _log.Information("receiptData cannot be empty");
                 return new AppleReceiptVerificationResult("receiptData cannot be empty",
-                    AppleReceiptVerificationStatuses.WrongArgument);
+                    IapVerificationResultStatus.WrongArgument);
             }
             // 2. Prevalidate Receipt (Optional)
             try
@@ -48,14 +48,14 @@ namespace Apple.Receipt.Verificator.Services
                 {
                     _log.Information("Receipt has wrong bundle ID {bundle_id}", receipt.BundleId);
                     return new AppleReceiptVerificationResult($"Receipt has wrong bundle ID {receipt.BundleId}",
-                        AppleReceiptVerificationStatuses.WrongArgument);
+                        IapVerificationResultStatus.WrongArgument);
                 }
 
                 if (_customValidation != null)
                 {
                     // if custom Validator implemented
                     AppleReceiptVerificationResult validationResult = _customValidation.ValidateReceipt(receipt);
-                    if (validationResult == null || validationResult.Status != AppleReceiptVerificationStatuses.Ok)
+                    if (validationResult == null || validationResult.Status != IapVerificationResultStatus.Ok)
                     {
                         // and custom validation doesn't passed - failed
                         return validationResult;
@@ -77,15 +77,15 @@ namespace Apple.Receipt.Verificator.Services
                     await _restService.ValidateAppleReceiptAsync(request).ConfigureAwait(false);
                 if (iapVerificationResult == null)
                 {
-                    return new AppleReceiptVerificationResult("IAP receipt verification failed",
-                        AppleReceiptVerificationStatuses.IAPVerificationFailed);
+                    return new AppleReceiptVerificationResult("IAP receipt verification failed. Apple returned empty receipt.",
+                        IapVerificationResultStatus.InternalVerificationFailed);
                 }
                 IapVerificationResultStatus iapStatus = iapVerificationResult.StatusCode;
                 // 1.If status <> 0 - failed
                 if (iapStatus != IapVerificationResultStatus.Ok)
                 {
                     return new AppleReceiptVerificationResult("IAP receipt verification failed",
-                        AppleReceiptVerificationStatuses.IAPVerificationFailed, iapStatus,
+                        iapStatus,
                         iapVerificationResult.Receipt);
                 }
 
@@ -94,18 +94,18 @@ namespace Apple.Receipt.Verificator.Services
                 {
                     _log.Information("IAP Receipt Verification failed due empty receipt");
                     return new AppleReceiptVerificationResult("IAP Receipt Verification failed due empty receipt.",
-                        AppleReceiptVerificationStatuses.IAPVerificationFailed);
+                        IapVerificationResultStatus.InternalVerificationFailed);
                 }
 
                 _log.Information("IAPReceipt Verification passed.");
                 return new AppleReceiptVerificationResult(iapVerificationResult.StatusCode,
-                    iapVerificationResult.Receipt);
+                    iapVerificationResult.Receipt, "Everything is OK.");
             }
             catch (Exception e)
             {
                 _log.Error(e, "Something went wrong in IAP receipt verification");
                 return new AppleReceiptVerificationResult("Something went wrong in IAP receipt verification",
-                    AppleReceiptVerificationStatuses.IAPVerificationFailed);
+                    IapVerificationResultStatus.InternalVerificationBroken);
             }
         }
     }
