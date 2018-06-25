@@ -12,7 +12,7 @@ Describes strongly-type representation of Apple Receipt Object.
 [Apple Documentation](https://developer.apple.com/library/archive/releasenotes/General/ValidateAppStoreReceipt/Chapters/ReceiptFields.html)
 
 ### Nuget information 
-https://www.nuget.org/packages/Apple.Receipt.Models/
+[Link to package](https://www.nuget.org/packages/Apple.Receipt.Models/)
 
 | Version | Downloads |
 | ------------- | ------------- |
@@ -27,10 +27,10 @@ https://www.nuget.org/packages/Apple.Receipt.Models/
 
 ### Description
 Parser for Apple Receipt that represented in base64 and encoded with ASN.1
-[Anatomy of a Receipt payload encoded with ASN.1] (https://www.objc.io/issues/17-security/receipt-validation/)
+[Anatomy of a Receipt payload encoded with ASN.1](https://www.objc.io/issues/17-security/receipt-validation/)
 
 ### Nuget information 
-https://www.nuget.org/packages/Apple.Receipt.Parser/
+[Link to package](https://www.nuget.org/packages/Apple.Receipt.Parser/)
 
 | Version | Downloads |
 | ------------- | ------------- |
@@ -46,10 +46,10 @@ https://www.nuget.org/packages/Apple.Receipt.Parser/
 ### Description
 Apple Receipt Validator using Apple App Store. 
 Two step verification: pre-validation that can be customized and App Store verification.
-[Apple Receipt Validation with App Store documentation] (https://developer.apple.com/library/archive/releasenotes/General/ValidateAppStoreReceipt/Chapters/ValidateRemotely.html)
+[Apple Receipt Validation with App Store documentation](https://developer.apple.com/library/archive/releasenotes/General/ValidateAppStoreReceipt/Chapters/ValidateRemotely.html)
 
 ### Nuget information 
-https://www.nuget.org/packages/Apple.Receipt.Verificator/
+[Link to package](https://www.nuget.org/packages/Apple.Receipt.Verificator/)
 
 | Version | Downloads |
 | ------------- | ------------- |
