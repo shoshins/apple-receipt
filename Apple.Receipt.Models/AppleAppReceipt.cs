@@ -195,13 +195,11 @@ namespace Apple.Receipt.Models
                 return null;
             }
 
-            long milliseconds;
-
-            if (!long.TryParse(millisecondsString, out milliseconds))
+            if (!long.TryParse(millisecondsString, out var milliseconds))
             {
                 return null;
             }
-            DateTime dt = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc).AddMilliseconds(milliseconds);
+            var dt = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc).AddMilliseconds(milliseconds);
             return dt;
         }
 

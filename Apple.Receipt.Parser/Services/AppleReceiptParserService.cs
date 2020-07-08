@@ -10,7 +10,7 @@ namespace Apple.Receipt.Parser.Services
         private readonly IAppleAsn1NodesParser _appleNodesParser;
         private readonly IAsn1NodesParser _nodesParser;
 
-        internal AppleReceiptParserService(IAppleAsn1NodesParser appleNodesParser, IAsn1NodesParser nodesParser)
+        public AppleReceiptParserService(IAppleAsn1NodesParser appleNodesParser, IAsn1NodesParser nodesParser)
         {
             _appleNodesParser = appleNodesParser;
             _nodesParser = nodesParser;
