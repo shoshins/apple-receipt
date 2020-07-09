@@ -50,7 +50,7 @@ jobs:
         run: dotnet pack --configuration Release --output nuget-packages -p:PackageVersion=${{ steps.gitversion.outputs.nuGetVersionV2 }}-${{ steps.gitversion.outputs.CommitsSinceVersionSourcePadded }}
       - uses: actions/upload-artifact@v2
         with:
-          name: Nuget-packages
+          name: Nuget-packages-${{ steps.gitversion.outputs.nuGetVersionV2 }}-${{ steps.gitversion.outputs.CommitsSinceVersionSourcePadded }}
           path: nuget-packages
       - name: Push package to nuget
         run: dotnet nuget push nuget-packages/*.nupkg --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json
