@@ -143,7 +143,7 @@ namespace Apple.Receipt.Models
         ///     is still trying to renew the subscription.
         /// </remarks>
         [JsonProperty("is_in_billing_retry_period")]
-        public AppleBillingRetryPeriod IsInBillingRetryPeriod { get; set; }
+        public AppleBillingRetryPeriod? IsInBillingRetryPeriod { get; set; }
 
         /// <summary>
         ///     For a subscription, whether or not it is in the free trial period.
@@ -187,7 +187,7 @@ namespace Apple.Receipt.Models
         ///     non-consumable product, an auto-renewable subscription, a non-renewing subscription, or for a free subscription.
         /// </remarks>
         [JsonProperty("cancellation_date")]
-        public DateTime CancellationDate { get; set; }
+        public DateTime? CancellationDate { get; set; }
 
         /// <summary>
         ///     For a transaction that was canceled, the reason for cancellation.
@@ -198,7 +198,7 @@ namespace Apple.Receipt.Models
         ///     contact Apple customer support.
         /// </remarks>
         [JsonProperty("cancellation_reason")]
-        public AppleCancellationReason CancellationReason { get; set; }
+        public AppleCancellationReason? CancellationReason { get; set; }
 
         /// <summary>
         ///     A string that the App Store uses to uniquely identify the application that created the transaction.
@@ -242,7 +242,7 @@ namespace Apple.Receipt.Models
         ///     customer can downgrade to from their current plan.
         /// </remarks>
         [JsonProperty("auto_renew_status")]
-        public AppleSubscriptionAutoRenewStatus SubscriptionAutoRenewStatus { get; set; }
+        public AppleSubscriptionAutoRenewStatus? SubscriptionAutoRenewStatus { get; set; }
 
         /// <summary>
         ///     The current renewal preference for the auto-renewable subscription.
@@ -270,7 +270,7 @@ namespace Apple.Receipt.Models
         ///     You can use this value to track customer adoption of the new price and take appropriate action.
         /// </remarks>
         [JsonProperty("price_consent_status")]
-        public AppleSubscriptionPriceConsentStatus SubscriptionPriceConsentStatus { get; set; }
+        public AppleSubscriptionPriceConsentStatus? SubscriptionPriceConsentStatus { get; set; }
 
         #region Internal things
 

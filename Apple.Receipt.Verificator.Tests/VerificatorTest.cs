@@ -23,7 +23,7 @@ namespace Apple.Receipt.Verificator.Tests
             {
                 x.VerifyReceiptSharedSecret = "XXXX";
                 x.VerificationType = AppleReceiptVerificationType.Sandbox;
-                x.AllowedBundleIds = new[] {"com.mbaasy.ios.demo"};
+                x.AllowedBundleIds = new[] { "com.mbaasy.ios.demo" };
             });
 
             services.AddScoped<IAppleReceiptCustomVerificatorService, AppleReceiptCustomVerificatorService>();
@@ -50,7 +50,7 @@ namespace Apple.Receipt.Verificator.Tests
             public IEnumerator<object[]> GetEnumerator()
             {
                 return Types()
-                    .Select(type => new object[] {type})
+                    .Select(type => new object[] { type })
                     .GetEnumerator();
             }
 

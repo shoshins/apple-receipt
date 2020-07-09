@@ -4,7 +4,7 @@ namespace Apple.Receipt.Verificator.Models
 {
     public class AppleReceiptVerificationSettings
     {
-        public string VerifyReceiptSharedSecret { get; set; } = null!;
+        public string? VerifyReceiptSharedSecret { get; set; }
 
         public AppleReceiptVerificationType VerificationType { get; set; }
 
