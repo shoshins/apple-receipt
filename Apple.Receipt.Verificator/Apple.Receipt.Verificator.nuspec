@@ -8,11 +8,14 @@
     <owners>Sergey Shoshin</owners>
     <license>MIT</license>
     <projectUrl>https://github.com/shoshins/apple-receipt</projectUrl>
-    <iconUrl>https://raw.githubusercontent.com/shoshins/apple-receipt/master/icon.png</iconUrl>
+    <icon>images/icon.png</icon>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Library for validating receipts with the App Store</description>
     <releaseNotes>Models and initialization improved</releaseNotes>
     <copyright>Copyright Sergey Shoshin 2018</copyright>
     <tags>Apple Receipt Validation AppStore</tags>
   </metadata>
+  <files>
+    <file src="../icon.png" target="images/" />
+  </files>
 </package>
