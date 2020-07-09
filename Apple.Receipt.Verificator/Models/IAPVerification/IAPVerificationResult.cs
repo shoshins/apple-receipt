@@ -4,12 +4,8 @@ using Newtonsoft.Json;
 
 namespace Apple.Receipt.Verificator.Models.IAPVerification
 {
-    /// <summary>
-    /// </summary>
     internal class IAPVerificationResult
     {
-        /// <summary>
-        /// </summary>
         [JsonProperty("status")]
         public int Status { get; set; }
 
@@ -30,6 +26,6 @@ namespace Apple.Receipt.Verificator.Models.IAPVerification
         public string Environment { get; set; }
 
         [JsonProperty("receipt")]
-        public AppleAppReceipt Receipt { get; set; }
+        public AppleAppReceipt? Receipt { get; set; }
     }
 }
