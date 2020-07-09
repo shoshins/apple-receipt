@@ -22,19 +22,27 @@ jobs:
         run: dotnet restore
       - name: Build with .Net Core
         run: dotnet build --no-restore --configuration Release
-  test:
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
       - name: Test with .Net Core
         run: dotnet test --no-build --nologo
   publish:
-    needs: test
+    needs: build
     runs-on: ubuntu-latest
     # if: github.ref == 'refs/heads/master'
     steps:
       - uses: actions/checkout@v2
+      - name: Fetch all history for all tags and branches
+        run: git fetch --prune --unshallow
+      - name: Install GitVersion
+        uses: gittools/actions/gitversion/setup@v0.9
+        with:
+          versionSpec: '5.2.x'
+      - name: Use GitVersion
+        id: gitversion # step id used as reference for output values
+        uses: gittools/actions/gitversion/execute@v0.9
+      - run: |
+          echo "NuGetVersionV2: ${{ steps.gitversion.outputs.nuGetVersionV2 }}"
+          echo "NuGetPreReleaseTagV2: ${{ steps.gitversion.outputs.CommitsSinceVersionSourcePadded }}"
       - name: Pack with .Net Core
-        run: dotnet pack --configuration Release --output nuget-packages
-      #- name: Push package to nuget
-      #- run: dotnet nuget push nuget-packages/*.nupkg --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json
+        run: dotnet pack --configuration Release --output nuget-packages -p:PackageVersion=${{ steps.gitversion.outputs.nuGetVersionV2 }}-${{ steps.gitversion.outputs.CommitsSinceVersionSourcePadded }}
+      - name: Push package to nuget
+        run: dotnet nuget push nuget-packages/*.nupkg --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json
