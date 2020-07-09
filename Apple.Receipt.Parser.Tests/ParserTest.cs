@@ -73,7 +73,7 @@ namespace Apple.Receipt.Parser.Tests
             {
                 Assert.Equal("1", receipt.ApplicationVersion);
                 Assert.Equal("1.0", receipt.OriginalApplicationVersion);
-                Assert.Equal(new DateTime(2015, 8, 13, 9, 50, 46), receipt.ReceiptCreationDateDt);
+                Assert.Equal(new DateTime(2015, 8, 13, 9, 50, 46, DateTimeKind.Utc), receipt.ReceiptCreationDateDt);
                 Assert.Equal(7, receipt.PurchaseReceipts.Count);
                 Assert.True(receipt.PurchaseReceipts.Count(purchaseReceipt => purchaseReceipt.ProductId == "consumable") == 1);
                 Assert.Equal(
