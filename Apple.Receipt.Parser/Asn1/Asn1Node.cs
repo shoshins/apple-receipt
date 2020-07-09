@@ -31,7 +31,7 @@ namespace Apple.Receipt.Parser.Asn1
         internal const int BitStringUnusedFiledLength = 1;
 
         private ArrayList _childNodeList;
-        private byte[] _data;
+        private byte[]? _data;
         private long _dataLength;
         private long _dataOffset;
         private bool _isIndefiniteLength;
@@ -76,8 +76,8 @@ namespace Apple.Receipt.Parser.Asn1
         /// <returns>true:Succeed; false:failed.</returns>
         public bool SaveData(Stream xdata)
         {
-            bool retval = true;
-            long nodeCount = ChildNodeCount;
+            var retval = true;
+            var nodeCount = ChildNodeCount;
             xdata.WriteByte(Tag);
             _utilities.DerLengthEncode(xdata, (ulong) _dataLength);
             if (Tag == Asn1Type.BitString)
@@ -96,7 +96,7 @@ namespace Apple.Receipt.Parser.Asn1
                 int i;
                 for (i = 0; i < nodeCount; i++)
                 {
-                    Asn1Node tempNode = GetChildNode(i);
+                    var tempNode = GetChildNode(i);
                     retval = tempNode.SaveData(xdata);
                 }
             }
@@ -109,9 +109,9 @@ namespace Apple.Receipt.Parser.Asn1
         public void ClearAll()
         {
             _data = null;
-            foreach (object t in _childNodeList)
+            foreach (var t in _childNodeList)
             {
-                Asn1Node tempNode = (Asn1Node) t;
+                var tempNode = (Asn1Node) t;
                 tempNode.ClearAll();
             }
             _childNodeList.Clear();
@@ -138,9 +138,9 @@ namespace Apple.Receipt.Parser.Asn1
         /// </summary>
         /// <param name="index">0 based index.</param>
         /// <returns>0 based index.</returns>
-        public Asn1Node GetChildNode(int index)
+        public Asn1Node? GetChildNode(int index)
         {
-            Asn1Node retval = null;
+            Asn1Node? retval = null;
             if (index < ChildNodeCount)
             {
                 retval = (Asn1Node) _childNodeList[index];
@@ -151,7 +151,7 @@ namespace Apple.Receipt.Parser.Asn1
         /// <summary>
         ///     Get parent node.
         /// </summary>
-        public Asn1Node ParentNode { get; private set; }
+        public Asn1Node? ParentNode { get; private set; }
 
         /// <summary>
         ///     Get/Set node data by byte[], the data length field content and all the
@@ -163,9 +163,9 @@ namespace Apple.Receipt.Parser.Asn1
         {
             get
             {
-                using (MemoryStream xdata = new MemoryStream())
+                using (var xdata = new MemoryStream())
                 {
-                    long nodeCount = ChildNodeCount;
+                    var nodeCount = ChildNodeCount;
                     if (nodeCount == 0)
                     {
                         if (_data != null)
@@ -175,13 +175,13 @@ namespace Apple.Receipt.Parser.Asn1
                     }
                     else
                     {
-                        for (int i = 0; i < nodeCount; i++)
+                        for (var i = 0; i < nodeCount; i++)
                         {
-                            Asn1Node tempNode = GetChildNode(i);
+                            var tempNode = GetChildNode(i);
                             tempNode.SaveData(xdata);
                         }
                     }
-                    byte[] tmpData = new byte[xdata.Length];
+                    var tmpData = new byte[xdata.Length];
                     xdata.Position = 0;
                     xdata.Read(tmpData, 0, (int) xdata.Length);
                     return tmpData;
@@ -215,14 +215,14 @@ namespace Apple.Receipt.Parser.Asn1
         /// <param name="oid">OID.</param>
         /// <param name="startNode">Starting node.</param>
         /// <returns>Null or Asn1Node.</returns>
-        internal static Asn1Node GetDecendantNodeByOid(string oid, Asn1Node startNode)
+        internal static Asn1Node? GetDecendantNodeByOid(string oid, Asn1Node startNode)
         {
-            Asn1Node retval = null;
-            Oid xoid = new Oid();
-            for (int i = 0; i < startNode.ChildNodeCount; i++)
+            Asn1Node? retval = null;
+            var xoid = new Oid();
+            for (var i = 0; i < startNode.ChildNodeCount; i++)
             {
-                Asn1Node childNode = startNode.GetChildNode(i);
-                int tmpTag = childNode.Tag & Asn1Type.Date;
+                var childNode = startNode.GetChildNode(i);
+                var tmpTag = childNode.Tag & Asn1Type.Date;
                 if (tmpTag == Asn1Type.ObjectIdentifier)
                 {
                     if (oid == xoid.Decode(childNode.Data))
@@ -258,7 +258,7 @@ namespace Apple.Receipt.Parser.Asn1
             ResetBranchDataLength(rootNode);
             rootNode._dataOffset = 0;
             rootNode.Deepness = 0;
-            long subOffset = rootNode._dataOffset + TagLength + rootNode._lengthFieldBytes;
+            var subOffset = rootNode._dataOffset + TagLength + rootNode._lengthFieldBytes;
             ResetChildNodePar(rootNode, subOffset);
         }
 
@@ -269,7 +269,6 @@ namespace Apple.Receipt.Parser.Asn1
         /// <returns>node data length.</returns>
         internal long ResetBranchDataLength(Asn1Node node)
         {
-            long retval;
             long childDataLength = 0;
             if (node.ChildNodeCount < 1)
             {
@@ -280,7 +279,7 @@ namespace Apple.Receipt.Parser.Asn1
             }
             else
             {
-                for (int i = 0; i < node.ChildNodeCount; i++)
+                for (var i = 0; i < node.ChildNodeCount; i++)
                 {
                     childDataLength += ResetBranchDataLength(node.GetChildNode(i));
                 }
@@ -290,8 +289,10 @@ namespace Apple.Receipt.Parser.Asn1
             {
                 node._dataLength += BitStringUnusedFiledLength;
             }
+
             ResetDataLengthFieldWidth(node);
-            retval = node._dataLength + TagLength + node._lengthFieldBytes;
+
+            var retval = node._dataLength + TagLength + node._lengthFieldBytes;
             return retval;
         }
 
@@ -301,11 +302,9 @@ namespace Apple.Receipt.Parser.Asn1
         /// <param name="node">The node needs to be reset.</param>
         internal void ResetDataLengthFieldWidth(Asn1Node node)
         {
-            using (MemoryStream tempStream = new MemoryStream())
-            {
-                _utilities.DerLengthEncode(tempStream, (ulong) node._dataLength);
-                node._lengthFieldBytes = tempStream.Length;
-            }
+            using var tempStream = new MemoryStream();
+            _utilities.DerLengthEncode(tempStream, (ulong) node._dataLength);
+            node._lengthFieldBytes = tempStream.Length;
         }
 
         /// <summary>
@@ -323,7 +322,7 @@ namespace Apple.Receipt.Parser.Asn1
             }
             for (i = 0; i < xNode.ChildNodeCount; i++)
             {
-                Asn1Node tempNode = xNode.GetChildNode(i);
+                var tempNode = xNode.GetChildNode(i);
                 tempNode.ParentNode = xNode;
                 tempNode._dataOffset = subOffset;
                 tempNode.Deepness = xNode.Deepness + 1;
@@ -341,17 +340,15 @@ namespace Apple.Receipt.Parser.Asn1
         /// <returns>true:Succeed, false:Failed.</returns>
         internal bool GeneralDecode(Stream xdata)
         {
-            long nodeMaxLen;
-            nodeMaxLen = xdata.Length - xdata.Position;
+            var nodeMaxLen = xdata.Length - xdata.Position;
             Tag = (byte) xdata.ReadByte();
-            long start, end;
-            start = xdata.Position;
+            var start = xdata.Position;
             _dataLength = _utilities.DerLengthDecode(xdata, ref _isIndefiniteLength);
             if (_dataLength < 0)
             {
                 return false; // Node data length can not be negative.
             }
-            end = xdata.Position;
+            var end = xdata.Position;
             _lengthFieldBytes = end - start;
             if (nodeMaxLen < _dataLength + TagLength + _lengthFieldBytes)
             {
@@ -369,7 +366,7 @@ namespace Apple.Receipt.Parser.Asn1
                 // First byte of BIT_STRING is unused bits.
                 // BIT_STRING data does not include this byte.
 
-                // Fixed by Gustaf Björklund.
+                // Fixed by Gustaf Bjï¿½rklund.
                 if (_dataLength < 1)
                 {
                     return false; // We cannot read less than 1 - 1 bytes.
@@ -394,22 +391,21 @@ namespace Apple.Receipt.Parser.Asn1
         /// <returns>true:Succeed, false:Failed.</returns>
         internal bool ListDecode(Stream xdata)
         {
-            bool retval = false;
-            long originalPosition = xdata.Position;
+            var retval = false;
+            var originalPosition = xdata.Position;
             try
             {
-                long childNodeMaxLen = xdata.Length - xdata.Position;
+                var childNodeMaxLen = xdata.Length - xdata.Position;
                 Tag = (byte) xdata.ReadByte();
-                long start, end, offset;
-                start = xdata.Position;
+                var start = xdata.Position;
                 _dataLength = _utilities.DerLengthDecode(xdata, ref _isIndefiniteLength);
                 if (_dataLength < 0 || childNodeMaxLen < _dataLength)
                 {
                     return false;
                 }
-                end = xdata.Position;
+                var end = xdata.Position;
                 _lengthFieldBytes = end - start;
-                offset = _dataOffset + TagLength + _lengthFieldBytes;
+                var offset = _dataOffset + TagLength + _lengthFieldBytes;
                 if (Tag == Asn1Type.BitString)
                 {
                     // First byte of BIT_STRING is unused bits.
@@ -424,7 +420,7 @@ namespace Apple.Receipt.Parser.Asn1
                 }
                 using (Stream secData = new MemoryStream((int) _dataLength))
                 {
-                    byte[] secByte = new byte[_dataLength];
+                    var secByte = new byte[_dataLength];
                     xdata.Read(secByte, 0, (int) _dataLength);
                     if (Tag == Asn1Type.BitString)
                     {
@@ -434,7 +430,7 @@ namespace Apple.Receipt.Parser.Asn1
                     secData.Position = 0;
                     while (secData.Position < secData.Length)
                     {
-                        Asn1Node node = new Asn1Node(this, offset) {_parseEncapsulatedData = _parseEncapsulatedData};
+                        var node = new Asn1Node(this, offset) {_parseEncapsulatedData = _parseEncapsulatedData};
                         start = secData.Position;
                         if (!node.InternalLoadData(secData))
                         {
@@ -480,13 +476,12 @@ namespace Apple.Receipt.Parser.Asn1
         /// <returns>true:Succeed; false:failed.</returns>
         internal bool InternalLoadData(Stream xdata)
         {
-            bool retval = true;
+            var retval = true;
             ClearAll();
-            byte xtag;
-            long curPosition = xdata.Position;
-            xtag = (byte) xdata.ReadByte();
+            var curPosition = xdata.Position;
+            var xtag = (byte) xdata.ReadByte();
             xdata.Position = curPosition;
-            int maskedTag = xtag & Asn1Type.Date;
+            var maskedTag = xtag & Asn1Type.Date;
             if ((xtag & Asn1Tag.Constructed) != 0
                 || _parseEncapsulatedData
                 && (maskedTag == Asn1Type.BitString

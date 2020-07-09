@@ -41,7 +41,7 @@ namespace Apple.Receipt.Parser.Services.NodesParser
         /// <returns>result bytes.</returns>
         public int DerLengthEncode(Stream xdata, ulong length)
         {
-            int i = 0;
+            var i = 0;
             if (length <= 0x7f)
             {
                 xdata.WriteByte((byte) length);
@@ -51,7 +51,7 @@ namespace Apple.Receipt.Parser.Services.NodesParser
             {
                 xdata.WriteByte((byte) (BytePrecision(length) | 0x80));
                 i++;
-                for (int j = BytePrecision(length); j > 0; --j)
+                for (var j = BytePrecision(length); j > 0; --j)
                 {
                     xdata.WriteByte((byte) (length >> ((j - 1) * 8)));
                     i++;
@@ -66,12 +66,12 @@ namespace Apple.Receipt.Parser.Services.NodesParser
         /// <param name="bt">Source stream.</param>
         /// <param name="isIndefiniteLength">Output parameter.</param>
         /// <returns>Output length.</returns>
+        // ReSharper disable once RedundantAssignment
         public long DerLengthDecode(Stream bt, ref bool isIndefiniteLength)
         {
             isIndefiniteLength = false;
             long length;
-            byte b;
-            b = (byte) bt.ReadByte();
+            var b = (byte) bt.ReadByte();
             if ((b & 0x80) == 0)
             {
                 length = b;

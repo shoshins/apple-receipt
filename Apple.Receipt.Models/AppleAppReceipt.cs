@@ -74,7 +74,7 @@ namespace Apple.Receipt.Models
         ///     An empty array is a valid receipt.
         /// </remarks>
         [JsonProperty("in_app")]
-        public List<AppleInAppPurchaseReceipt> PurchaseReceipts { get; set; }
+        public List<AppleInAppPurchaseReceipt>? PurchaseReceipts { get; set; }
 
         /// <summary>
         ///     The version of the app that was originally purchased.

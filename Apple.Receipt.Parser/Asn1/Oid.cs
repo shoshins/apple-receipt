@@ -16,12 +16,13 @@ namespace Apple.Receipt.Parser.Asn1
         /// <returns>result OID string.</returns>
         public string Decode(byte[] data)
         {
-            using (MemoryStream ms = new MemoryStream(data))
+            using var ms = new MemoryStream(data)
             {
-                ms.Position = 0;
-                string retval = Decode(ms);
-                return retval;
-            }
+                Position = 0
+            };
+
+            var retval = Decode(ms);
+            return retval;
         }
 
         /// <summary>
@@ -31,9 +32,9 @@ namespace Apple.Receipt.Parser.Asn1
         /// <returns>result OID string.</returns>
         public virtual string Decode(Stream bt)
         {
-            string retval = "";
+            var retval = "";
             ulong v = 0;
-            byte b = (byte) bt.ReadByte();
+            var b = (byte) bt.ReadByte();
             retval += Convert.ToString(b / 40);
             retval += "." + Convert.ToString(b % 40);
             while (bt.Position < bt.Length)
@@ -59,11 +60,11 @@ namespace Apple.Receipt.Parser.Asn1
         /// <returns>OID value bytes.</returns>
         protected int DecodeValue(Stream bt, ref ulong v)
         {
-            int i = 0;
+            var i = 0;
             v = 0;
             while (true)
             {
-                byte b = (byte) bt.ReadByte();
+                var b = (byte) bt.ReadByte();
                 i++;
                 v <<= 7;
                 v += (ulong) (b & 0x7f);

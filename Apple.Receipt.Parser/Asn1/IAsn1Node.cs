@@ -51,7 +51,7 @@ namespace Apple.Receipt.Parser.Asn1
         /// </summary>
         /// <param name="index">0 based index.</param>
         /// <returns>0 based index.</returns>
-        Asn1Node GetChildNode(int index);
+        Asn1Node? GetChildNode(int index);
 
         /// <summary>
         ///     Clear data and children list.

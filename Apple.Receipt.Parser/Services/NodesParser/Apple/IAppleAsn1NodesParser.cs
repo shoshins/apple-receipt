@@ -5,6 +5,6 @@ namespace Apple.Receipt.Parser.Services.NodesParser.Apple
 {
     internal interface IAppleAsn1NodesParser
     {
-        AppleAppReceipt GetAppleReceiptFromNode(Asn1Node tNode, AppleAppReceipt receipt = null);
+        AppleAppReceipt GetAppleReceiptFromNode(Asn1Node tNode, AppleAppReceipt? receipt = null);
     }
 }
