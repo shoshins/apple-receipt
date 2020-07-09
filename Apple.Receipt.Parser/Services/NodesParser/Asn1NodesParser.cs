@@ -67,9 +67,8 @@ namespace Apple.Receipt.Parser.Services.NodesParser
                 return DateTime.MinValue;
             }
 
-            var retval = DateTime.MaxValue;
-            DateTime.TryParse(dataStr, out retval);
-            return retval;
+            DateTime.TryParse(dataStr, out var retval);
+            return retval.ToUniversalTime();
         }
 
         public string GetDateTimeMsFromNode(Asn1Node nn)
