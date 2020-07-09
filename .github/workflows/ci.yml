@@ -1,0 +1,32 @@
+﻿name: Nuget Package Deploy
+
+on:
+  push:
+    branches:
+      - master
+      - feature/netcore
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Setup .Net Core
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet.version: '3.1.x'
+      - name: Restore with .Net Core
+      - run: dotnet restore
+      - name: Build with .Net Core
+      - run: dotnet build --no-restore --configuration Release
+      - name: Test with .Net Core
+      - run: dotnet test --no-build --nologo
+  publish:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Pack with .Net Core
+      - run: dotnet pack --configuration Release --output nuget-packages
+      #- name: Push package to nuget
+      #- run: dotnet nuget push nuget-packages/*.nupkg --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json
