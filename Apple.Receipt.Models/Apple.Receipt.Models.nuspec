@@ -6,7 +6,7 @@
     <title>Apple.Receipt.Models</title>
     <authors>Sergey Shoshin</authors>
     <owners>Sergey Shoshin</owners>
-    <licenseUrl>https://github.com/shoshins/apple-receipt/blob/master/LICENSE</licenseUrl>
+    <license>MIT</license>
     <projectUrl>https://github.com/shoshins/apple-receipt</projectUrl>
     <iconUrl>https://raw.githubusercontent.com/shoshins/apple-receipt/master/icon.png</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
