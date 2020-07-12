@@ -5,6 +5,6 @@ namespace Apple.Receipt.Verificator.Services
 {
     public interface IAppleReceiptCustomVerificatorService
     {
-        AppleReceiptVerificationResult ValidateReceipt(AppleAppReceipt receipt);
+        AppleReceiptVerificationResult? ValidateReceipt(AppleAppReceipt? receipt);
     }
 }

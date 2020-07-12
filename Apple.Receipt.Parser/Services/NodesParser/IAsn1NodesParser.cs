@@ -5,7 +5,7 @@ namespace Apple.Receipt.Parser.Services.NodesParser
 {
     internal interface IAsn1NodesParser
     {
-        string GetStringFromNode(Asn1Node nn);
+        string? GetStringFromNode(Asn1Node nn);
 
         bool GetBoolFromNode(Asn1Node nn);
 

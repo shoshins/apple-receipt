@@ -74,7 +74,7 @@ namespace Apple.Receipt.Models
         ///     An empty array is a valid receipt.
         /// </remarks>
         [JsonProperty("in_app")]
-        public List<AppleInAppPurchaseReceipt> PurchaseReceipts { get; set; }
+        public List<AppleInAppPurchaseReceipt>? PurchaseReceipts { get; set; }
 
         /// <summary>
         ///     The version of the app that was originally purchased.
@@ -195,13 +195,12 @@ namespace Apple.Receipt.Models
                 return null;
             }
 
-            long milliseconds;
-
-            if (!long.TryParse(millisecondsString, out milliseconds))
+            if (!long.TryParse(millisecondsString, out var milliseconds))
             {
                 return null;
             }
-            DateTime dt = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc).AddMilliseconds(milliseconds);
+
+            var dt = DateTimeOffset.FromUnixTimeMilliseconds(milliseconds).UtcDateTime;
             return dt;
         }
 
