@@ -132,7 +132,7 @@ namespace Apple.Receipt.Models
         ///     decide whether to display appropriate messaging in your app for customers to resubscribe.
         /// </remarks>
         [JsonProperty("expiration_intent")]
-        public AppleExpirationIntent ExpirationIntent { get; set; }
+        public AppleExpirationIntent? ExpirationIntent { get; set; }
 
         /// <summary>
         ///     For an expired subscription, whether or not Apple is still attempting to automatically renew the subscription.
