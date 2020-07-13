@@ -59,23 +59,30 @@ namespace Apple.Receipt.Parser.Services.NodesParser
             return dataStr;
         }
 
-        public DateTime GetDateTimeFromNode(Asn1Node nn)
+        public DateTime? GetDateTimeFromNode(Asn1Node nn)
         {
             var dataStr = GetStringFromNode(nn);
             if (string.IsNullOrEmpty(dataStr))
             {
-                return DateTime.MinValue;
+                return null;
             }
 
-            DateTime.TryParse(dataStr, out var retval);
-            return retval.ToUniversalTime();
+            return DateTime.TryParse(dataStr, out var retval)
+                ? (DateTime?) retval.ToUniversalTime()
+                : null;
         }
 
-        public string GetDateTimeMsFromNode(Asn1Node nn)
+        public string? GetDateTimeMsFromNode(Asn1Node nn)
         {
             var date = GetDateTimeFromNode(nn);
+
+            if (!date.HasValue)
+            {
+                return null;
+            }
+
             var epoch = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
-            return Convert.ToInt64((date - epoch).TotalMilliseconds).ToString();
+            return Convert.ToInt64((date.Value - epoch).TotalMilliseconds).ToString();
         }
 
         public int GetIntegerFromNode(Asn1Node nn)

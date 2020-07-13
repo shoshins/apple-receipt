@@ -9,9 +9,9 @@ namespace Apple.Receipt.Parser.Services.NodesParser
 
         bool GetBoolFromNode(Asn1Node nn);
 
-        DateTime GetDateTimeFromNode(Asn1Node nn);
+        DateTime? GetDateTimeFromNode(Asn1Node nn);
 
-        string GetDateTimeMsFromNode(Asn1Node nn);
+        string? GetDateTimeMsFromNode(Asn1Node nn);
 
         int GetIntegerFromNode(Asn1Node nn);
 
