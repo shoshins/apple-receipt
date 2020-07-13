@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Apple.Receipt.Models.Converters;
+using System;
 using System.Collections.Generic;
 using Newtonsoft.Json;
 
@@ -186,33 +187,15 @@ namespace Apple.Receipt.Models
         [JsonProperty("version_external_identifier")]
         public int VersionExternalIdentifier { get; set; }
 
-        #region Internal things
-
-        private DateTime? MillisecondsToDate(string millisecondsString)
-        {
-            if (string.IsNullOrEmpty(millisecondsString))
-            {
-                return null;
-            }
-
-            if (!long.TryParse(millisecondsString, out var milliseconds))
-            {
-                return null;
-            }
-
-            var dt = DateTimeOffset.FromUnixTimeMilliseconds(milliseconds).UtcDateTime;
-            return dt;
-        }
-
-        #endregion
-
         #region Parsed dates objects
 
-        public DateTime? ReceiptCreationDateDt => MillisecondsToDate(ReceiptCreationDateMs);
+        public DateTime? ExpirationDateDt => DateTimeConverter.MillisecondsToDate(ExpirationDateMs);
 
-        public DateTime? RequestDateDt => MillisecondsToDate(RequestDateMs);
+        public DateTime? OriginalPurchaseDateDt => DateTimeConverter.MillisecondsToDate(OriginalPurchaseDateMs);
 
-        public DateTime? OriginalPurchaseDateDt => MillisecondsToDate(OriginalPurchaseDateMs);
+        public DateTime? ReceiptCreationDateDt => DateTimeConverter.MillisecondsToDate(ReceiptCreationDateMs);
+
+        public DateTime? RequestDateDt => DateTimeConverter.MillisecondsToDate(RequestDateMs);
 
         #endregion
     }

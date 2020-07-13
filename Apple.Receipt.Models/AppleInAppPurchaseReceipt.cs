@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Apple.Receipt.Models.Converters;
+using System;
 using Apple.Receipt.Models.Enums;
 using Newtonsoft.Json;
 
@@ -187,7 +188,19 @@ namespace Apple.Receipt.Models
         ///     non-consumable product, an auto-renewable subscription, a non-renewing subscription, or for a free subscription.
         /// </remarks>
         [JsonProperty("cancellation_date")]
-        public DateTime? CancellationDate { get; set; }
+        public string? CancellationDate { get; set; }
+
+        /// <summary>
+        ///     The same like <see cref="CancellationDate" /> but in unix epoch milliseconds.
+        /// </summary>
+        [JsonProperty("cancellation_date_ms")]
+        public string? CancellationDateMs { get; set; }
+
+        /// <summary>
+        ///     The same like <see cref="CancellationDate" /> but in PST timezone.
+        /// </summary>
+        [JsonProperty("cancellation_date_pst")]
+        public string? CancellationDatePst { get; set; }
 
         /// <summary>
         ///     For a transaction that was canceled, the reason for cancellation.
@@ -258,7 +271,6 @@ namespace Apple.Receipt.Models
         [JsonProperty("auto_renew_product_id")]
         public string SubscriptionRenewProductId { get; set; }
 
-
         /// <summary>
         ///     The current price consent status for a subscription price increase.
         /// </summary>
@@ -272,32 +284,15 @@ namespace Apple.Receipt.Models
         [JsonProperty("price_consent_status")]
         public AppleSubscriptionPriceConsentStatus? SubscriptionPriceConsentStatus { get; set; }
 
-        #region Internal things
-
-        private DateTime? MillisecondsToDate(string millisecondsString)
-        {
-            if (string.IsNullOrEmpty(millisecondsString))
-            {
-                return null;
-            }
-
-            long milliseconds;
-
-            if (!long.TryParse(millisecondsString, out milliseconds))
-            {
-                return null;
-            }
-            DateTime dt = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc).AddMilliseconds(milliseconds);
-            return dt.ToLocalTime();
-        }
-
-        #endregion
-
         #region Parsed dates objects
 
-        public DateTime? PurchaseDateDt => MillisecondsToDate(PurchaseDateMs);
+        public DateTime? CancellationDateDt => DateTimeConverter.MillisecondsToDate(CancellationDateMs);
 
-        public DateTime? OriginalPurchaseDateDt => MillisecondsToDate(OriginalPurchaseDateMs);
+        public DateTime? ExpirationDateDt => DateTimeConverter.MillisecondsToDate(ExpirationDateMs);
+
+        public DateTime? PurchaseDateDt => DateTimeConverter.MillisecondsToDate(PurchaseDateMs);
+
+        public DateTime? OriginalPurchaseDateDt => DateTimeConverter.MillisecondsToDate(OriginalPurchaseDateMs);
 
         #endregion
     }

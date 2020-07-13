@@ -106,7 +106,7 @@ namespace Apple.Receipt.Parser.Services.NodesParser.Apple
                                                         purchaseReceipt.WebOrderLineItemId = _nodesParser.GetStringFromNode(node3113);
                                                         break;
                                                     case AppReceiptAsnType.CancellationDate:
-                                                        purchaseReceipt.CancellationDate = _nodesParser.GetDateTimeFromNode(node3113);
+                                                        purchaseReceipt.CancellationDateMs = _nodesParser.GetDateTimeMsFromNode(node3113);
                                                         break;
                                                     case AppReceiptAsnType.SubscriptionIntroductoryPricePeriod:
                                                         purchaseReceipt.IsInIntroOfferPeriod = _nodesParser.GetBoolFromNode(node3113);
