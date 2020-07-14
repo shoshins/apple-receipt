@@ -1,5 +1,5 @@
-﻿using System;
-using Apple.Receipt.Parser.Asn1;
+﻿using Apple.Receipt.Parser.Asn1;
+using System;
 
 namespace Apple.Receipt.Parser.Services.NodesParser
 {

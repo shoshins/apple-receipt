@@ -1,7 +1,7 @@
 ﻿using Apple.Receipt.Models.Converters;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
-using Newtonsoft.Json;
 
 namespace Apple.Receipt.Models
 {
