@@ -4,7 +4,7 @@ namespace Apple.Receipt.Verificator.Models
 {
     public class AppleReceiptVerificationSettings
     {
-        public string VerifyReceiptSharedSecret { get; set; } = null!;
+        public string? VerifyReceiptSharedSecret { get; set; }
 
         public AppleReceiptVerificationType VerificationType { get; set; }
 
@@ -14,7 +14,7 @@ namespace Apple.Receipt.Verificator.Models
             ? ProductionUrl
             : SandboxUrl;
 
-        public string ProductionUrl { get; set; } = "https://sandbox.itunes.apple.com/verifyReceipt";
+        public string ProductionUrl { get; set; } = "https://buy.itunes.apple.com/verifyReceipt";
 
         public string SandboxUrl { get; set; } = "https://sandbox.itunes.apple.com/verifyReceipt";
     }

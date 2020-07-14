@@ -1,7 +1,7 @@
+using Apple.Receipt.Parser.Services.NodesParser;
 using System;
 using System.Collections;
 using System.IO;
-using Apple.Receipt.Parser.Services.NodesParser;
 
 namespace Apple.Receipt.Parser.Asn1
 {

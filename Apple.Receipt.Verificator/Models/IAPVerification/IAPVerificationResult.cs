@@ -1,6 +1,6 @@
-﻿using System;
-using Apple.Receipt.Models;
+﻿using Apple.Receipt.Models;
 using Newtonsoft.Json;
+using System;
 
 namespace Apple.Receipt.Verificator.Models.IAPVerification
 {

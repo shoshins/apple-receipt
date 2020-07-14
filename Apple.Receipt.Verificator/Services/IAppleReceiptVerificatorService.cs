@@ -1,5 +1,5 @@
-﻿using System.Threading.Tasks;
-using Apple.Receipt.Verificator.Models;
+﻿using Apple.Receipt.Verificator.Models;
+using System.Threading.Tasks;
 
 namespace Apple.Receipt.Verificator.Services
 {

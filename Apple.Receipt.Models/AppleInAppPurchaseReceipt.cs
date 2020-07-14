@@ -1,6 +1,7 @@
-﻿using System;
+﻿using Apple.Receipt.Models.Converters;
 using Apple.Receipt.Models.Enums;
 using Newtonsoft.Json;
+using System;
 
 namespace Apple.Receipt.Models
 {
@@ -131,7 +132,7 @@ namespace Apple.Receipt.Models
         ///     decide whether to display appropriate messaging in your app for customers to resubscribe.
         /// </remarks>
         [JsonProperty("expiration_intent")]
-        public AppleExpirationIntent ExpirationIntent { get; set; }
+        public AppleExpirationIntent? ExpirationIntent { get; set; }
 
         /// <summary>
         ///     For an expired subscription, whether or not Apple is still attempting to automatically renew the subscription.
@@ -143,7 +144,7 @@ namespace Apple.Receipt.Models
         ///     is still trying to renew the subscription.
         /// </remarks>
         [JsonProperty("is_in_billing_retry_period")]
-        public AppleBillingRetryPeriod IsInBillingRetryPeriod { get; set; }
+        public AppleBillingRetryPeriod? IsInBillingRetryPeriod { get; set; }
 
         /// <summary>
         ///     For a subscription, whether or not it is in the free trial period.
@@ -187,7 +188,19 @@ namespace Apple.Receipt.Models
         ///     non-consumable product, an auto-renewable subscription, a non-renewing subscription, or for a free subscription.
         /// </remarks>
         [JsonProperty("cancellation_date")]
-        public DateTime CancellationDate { get; set; }
+        public string? CancellationDate { get; set; }
+
+        /// <summary>
+        ///     The same like <see cref="CancellationDate" /> but in unix epoch milliseconds.
+        /// </summary>
+        [JsonProperty("cancellation_date_ms")]
+        public string? CancellationDateMs { get; set; }
+
+        /// <summary>
+        ///     The same like <see cref="CancellationDate" /> but in PST timezone.
+        /// </summary>
+        [JsonProperty("cancellation_date_pst")]
+        public string? CancellationDatePst { get; set; }
 
         /// <summary>
         ///     For a transaction that was canceled, the reason for cancellation.
@@ -198,7 +211,7 @@ namespace Apple.Receipt.Models
         ///     contact Apple customer support.
         /// </remarks>
         [JsonProperty("cancellation_reason")]
-        public AppleCancellationReason CancellationReason { get; set; }
+        public AppleCancellationReason? CancellationReason { get; set; }
 
         /// <summary>
         ///     A string that the App Store uses to uniquely identify the application that created the transaction.
@@ -242,7 +255,7 @@ namespace Apple.Receipt.Models
         ///     customer can downgrade to from their current plan.
         /// </remarks>
         [JsonProperty("auto_renew_status")]
-        public AppleSubscriptionAutoRenewStatus SubscriptionAutoRenewStatus { get; set; }
+        public AppleSubscriptionAutoRenewStatus? SubscriptionAutoRenewStatus { get; set; }
 
         /// <summary>
         ///     The current renewal preference for the auto-renewable subscription.
@@ -258,7 +271,6 @@ namespace Apple.Receipt.Models
         [JsonProperty("auto_renew_product_id")]
         public string SubscriptionRenewProductId { get; set; }
 
-
         /// <summary>
         ///     The current price consent status for a subscription price increase.
         /// </summary>
@@ -270,34 +282,17 @@ namespace Apple.Receipt.Models
         ///     You can use this value to track customer adoption of the new price and take appropriate action.
         /// </remarks>
         [JsonProperty("price_consent_status")]
-        public AppleSubscriptionPriceConsentStatus SubscriptionPriceConsentStatus { get; set; }
-
-        #region Internal things
-
-        private DateTime? MillisecondsToDate(string millisecondsString)
-        {
-            if (string.IsNullOrEmpty(millisecondsString))
-            {
-                return null;
-            }
-
-            long milliseconds;
-
-            if (!long.TryParse(millisecondsString, out milliseconds))
-            {
-                return null;
-            }
-            DateTime dt = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc).AddMilliseconds(milliseconds);
-            return dt.ToLocalTime();
-        }
-
-        #endregion
+        public AppleSubscriptionPriceConsentStatus? SubscriptionPriceConsentStatus { get; set; }
 
         #region Parsed dates objects
 
-        public DateTime? PurchaseDateDt => MillisecondsToDate(PurchaseDateMs);
+        public DateTime? CancellationDateDt => DateTimeConverter.MillisecondsToDate(CancellationDateMs);
 
-        public DateTime? OriginalPurchaseDateDt => MillisecondsToDate(OriginalPurchaseDateMs);
+        public DateTime? ExpirationDateDt => DateTimeConverter.MillisecondsToDate(ExpirationDateMs);
+
+        public DateTime? PurchaseDateDt => DateTimeConverter.MillisecondsToDate(PurchaseDateMs);
+
+        public DateTime? OriginalPurchaseDateDt => DateTimeConverter.MillisecondsToDate(OriginalPurchaseDateMs);
 
         #endregion
     }

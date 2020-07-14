@@ -21,7 +21,7 @@ namespace Apple.Receipt.Verificator.Services
             ILogger<AppleReceiptVerificatorService> logger,
             IAppleReceiptParserService receiptParserService,
             IOptionsSnapshot<AppleReceiptVerificationSettings> settings,
-            IAppleReceiptCustomVerificatorService? customValidation
+            IAppleReceiptCustomVerificatorService? customValidation = null
         )
         {
             _restService = restService;
