@@ -1,7 +1,7 @@
 # Project status
 | Branch | Build        | Quality |
 | ------------- | ------------- | ------------- |
-| master | ![Build Status](https://github.com/shoshins/apple-receipt/workflows/Nuget%20Package%20Deploy/badge.svg)      | ![Code Quality](https://sonarcloud.io/api/project_badges/measure?project=apple-receipt-parser&metric=alert_status) |
+| master | ![Build Status](https://github.com/shoshins/apple-receipt/workflows/Nuget%20Package%20Deploy/badge.svg)      | [![Quality gate](https://sonarcloud.io/api/project_badges/quality_gate?project=apple-receipt)](https://sonarcloud.io/dashboard?id=apple-receipt) |
 
 # Nuget Packages Information
 
