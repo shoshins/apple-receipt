@@ -17,16 +17,14 @@ namespace Apple.Receipt.Verificator.Modules
 
             if (configureOptions != null)
             {
-                services.Configure<AppleReceiptVerificationSettings>(configureOptions);
+                services.Configure(configureOptions);
             }
 
             services.AddRefitClient<IRestService>()
-                .ConfigureHttpClient((serviceProvider, httpClient) =>
-                {
-                    var options = serviceProvider.GetRequiredService<IOptionsSnapshot<AppleReceiptVerificationSettings>>();
-
-                    httpClient.BaseAddress = new Uri(options.Value.VerifyUrl);
-                });
+                .ConfigureHttpClient((serviceProvider, httpClient) 
+                    => httpClient.BaseAddress = new Uri(
+                        serviceProvider.GetRequiredService<IOptions<AppleReceiptVerificationSettings>>()
+                            .Value.VerifyUrl));
 
             services.TryAddScoped<IAppleReceiptVerificatorService, AppleReceiptVerificatorService>();
 
