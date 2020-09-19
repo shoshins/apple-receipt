@@ -17,6 +17,9 @@ jobs:
       DOTNET_CLI_TELEMETRY_OPTOUT: 'true'
     steps:
       - uses: actions/checkout@v2
+        with:
+          # shallow clone disabled as recommended by SonarCLoud - https://github.com/marketplace/actions/sonarcloud-scan
+          fetch-depth: 0
       - name: Setup .Net Core
         uses: actions/setup-dotnet@v1
         with:
