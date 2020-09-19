@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Apple.Receipt.Verificator.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
@@ -17,10 +18,12 @@ namespace Apple.Receipt.Example.Controllers
         };
 
         private readonly ILogger<WeatherForecastController> _logger;
+        private readonly IAppleReceiptVerificatorService _appleVerificationService;
 
-        public WeatherForecastController(ILogger<WeatherForecastController> logger)
+        public WeatherForecastController(ILogger<WeatherForecastController> logger, IAppleReceiptVerificatorService appleVerificationService)
         {
             _logger = logger;
+            _appleVerificationService = appleVerificationService;
         }
 
         [HttpGet]

@@ -2,6 +2,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Apple.Receipt.Verificator.Models;
+using Apple.Receipt.Verificator.Modules;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -26,6 +28,12 @@ namespace Apple.Receipt.Example
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+            services.RegisterAppleReceiptVerificator(options =>
+            {
+                options.VerifyReceiptSharedSecret = "xxx";
+                options.VerificationType = AppleReceiptVerificationType.Sandbox;
+                options.AllowedBundleIds = new[] { "com.example.app" };
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
