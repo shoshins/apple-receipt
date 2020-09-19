@@ -27,6 +27,12 @@ jobs:
         run: dotnet build --no-restore --configuration Release
       - name: Test with .Net Core
         run: dotnet test --no-build --nologo --configuration Release
+      - name: SonarCloud Scan
+        uses: SonarSource/sonarcloud-github-action@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+          
   publish:
     needs: build
     runs-on: ubuntu-latest
