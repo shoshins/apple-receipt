@@ -30,9 +30,9 @@ namespace Apple.Receipt.Example
             services.AddControllers();
             services.RegisterAppleReceiptVerificator(options =>
             {
-                options.VerifyReceiptSharedSecret = "xxx";
+                options.VerifyReceiptSharedSecret = "XXXX";
                 options.VerificationType = AppleReceiptVerificationType.Sandbox;
-                options.AllowedBundleIds = new[] { "com.example.app" };
+                options.AllowedBundleIds = new[] { "com.mbaasy.ios.demo" };
             });
         }
 
