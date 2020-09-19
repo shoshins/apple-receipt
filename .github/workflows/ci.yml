@@ -33,9 +33,10 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         with:
-          projectKey: apple-receipt
-          orgnization: shoshins-github
-          hostUrl: https://sonarcloud.io
+          args: >
+            -Dsonar.organization=shoshins-github
+            -Dsonar.projectKey=apple-receipt
+            -Dsonar.verbose=true
           
   publish:
     needs: build
