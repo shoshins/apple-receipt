@@ -53,6 +53,12 @@ namespace Apple.Receipt.Models
         [JsonProperty("bundle_id")]
         public string BundleId { get; set; }
 
+        /// <summary>
+        ///     A unique identifier for the app download transaction.
+        /// </summary>
+        /// <remarks>
+        ///     Int / Long / Null are possible.
+        /// </remarks>
         [JsonProperty("download_id")]
         public long? DownloadId { get; set; }
 
