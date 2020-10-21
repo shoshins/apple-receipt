@@ -54,7 +54,7 @@ namespace Apple.Receipt.Models
         public string BundleId { get; set; }
 
         [JsonProperty("download_id")]
-        public int? DownloadId { get; set; }
+        public long? DownloadId { get; set; }
 
         /// <summary>
         ///     The receipt for an in-app purchase.
