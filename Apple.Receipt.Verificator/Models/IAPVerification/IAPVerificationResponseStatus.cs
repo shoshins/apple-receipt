@@ -3,7 +3,7 @@
     /// <summary>
     ///     Verify Receipt Result types enumeration
     /// </summary>
-    public enum IapVerificationResultStatus
+    public enum IAPVerificationResponseStatus
     {
         /// <summary>
         ///     Internal Verification. Something went wrong due verification process.

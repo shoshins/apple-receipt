@@ -8,7 +8,7 @@ namespace Apple.Receipt.Verificator.Models
 
         public AppleReceiptVerificationType VerificationType { get; set; }
 
-        public ICollection<string> AllowedBundleIds { get; set; } = null!;
+        public ICollection<string> AllowedBundleIds { get; set; }
 
         public string VerifyUrl => VerificationType == AppleReceiptVerificationType.Production
             ? ProductionUrl

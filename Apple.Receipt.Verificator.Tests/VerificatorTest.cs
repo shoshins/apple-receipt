@@ -74,7 +74,7 @@ namespace Apple.Receipt.Verificator.Tests
             var verificator = _container.GetRequiredService<IAppleReceiptVerificatorService>();
             var result = await verificator.VerifyAppleReceiptAsync(appleAppReceipt);
             Assert.NotNull(result);
-            Assert.Equal(IapVerificationResultStatus.SharedSecretWrong, result.Status);
+            Assert.Equal(IAPVerificationResponseStatus.SharedSecretWrong, result.Status);
         }
     }
 }
