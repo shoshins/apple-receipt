@@ -103,17 +103,6 @@ namespace Apple.Receipt.Verificator.Services
                     );
                 }
 
-                // 2. If there is no information about receipt - failed.
-                if (iapVerificationResult.Receipt == null)
-                {
-                    _logger.LogInformation("IAP Receipt Verification failed due empty receipt");
-
-                    return new AppleReceiptVerificationResult(
-                        "IAP Receipt Verification failed due empty receipt.",
-                        IAPVerificationResponseStatus.InternalVerificationFailed
-                    );
-                }
-
                 _logger.LogInformation("IAPReceipt Verification passed.");
 
                 return new AppleReceiptVerificationResult(
