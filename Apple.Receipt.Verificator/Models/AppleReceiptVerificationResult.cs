@@ -17,7 +17,7 @@ namespace Apple.Receipt.Verificator.Models
             AppleVerificationResponse = verificationResponse;
             if (verificationResponse != null)
             {
-                Status = verificationResponse.Status;
+                Status = verificationResponse.StatusCode;
                 Receipt = verificationResponse.Receipt;
             }
         }

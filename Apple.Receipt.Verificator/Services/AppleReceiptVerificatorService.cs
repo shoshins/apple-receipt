@@ -93,7 +93,7 @@ namespace Apple.Receipt.Verificator.Services
                     );
                 }
 
-                var iapStatus = iapVerificationResult.Status;
+                var iapStatus = iapVerificationResult.StatusCode;
                 // 1.If status <> 0 - failed
                 if (iapStatus != IAPVerificationResponseStatus.Ok)
                 {
