@@ -6,6 +6,15 @@
     internal enum ReceiptAsnType
     {
         /// <summary>
+        ///     Receipt Type. Such as ProductionSandbox etc.
+        /// </summary>
+        /// <remarks>
+        ///     ASN.1 Field Type 0
+        ///     ASN.1 Field Value UTF8STRING
+        /// </remarks>
+        ReceiptType = 0,
+        
+        /// <summary>
         ///     The app’s bundle identifier.
         /// </summary>
         /// <remarks>

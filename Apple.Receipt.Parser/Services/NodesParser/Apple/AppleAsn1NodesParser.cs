@@ -36,6 +36,9 @@ namespace Apple.Receipt.Parser.Services.NodesParser.Apple
                     var asnType = (ReceiptAsnType) _utilities.BytesToLong(node1.Data);
                     switch (asnType)
                     {
+                        case ReceiptAsnType.ReceiptType:
+                            receipt.ReceiptType = _nodesParser.GetStringFromNode(node3);
+                            break;
                         case ReceiptAsnType.BundleIdentifier:
                             receipt.BundleId = _nodesParser.GetStringFromNode(node3);
                             break;
