@@ -1,7 +1,14 @@
 # Project status
-| Branch | Build        | Quality |
-| ------------- | ------------- | ------------- |
-| master | ![Build Status](https://github.com/shoshins/apple-receipt/workflows/Nuget%20Package%20Deploy/badge.svg)      | [![Quality gate](https://sonarcloud.io/api/project_badges/quality_gate?project=apple-receipt)](https://sonarcloud.io/dashboard?id=apple-receipt) |
+| Statistics        |
+| ------------- |
+| ![GitHub release](https://img.shields.io/github/v/release/shoshins/apple-receipt?label=Latest%20Release&sort=semver&style=for-the-badge)      |
+| ![NuGet](https://img.shields.io/nuget/dt/Apple.Receipt.Models?label=.Models%20Downloads&style=for-the-badge)      |
+| ![NuGet](https://img.shields.io/nuget/dt/Apple.Receipt.Parser?label=.Parser%20Downloads&style=for-the-badge)      |
+| ![NuGet](https://img.shields.io/nuget/dt/Apple.Receipt.Verificator?label=.Verificator%20Downloads&style=for-the-badge)      |
+| ![Build Status](https://img.shields.io/github/workflow/status/shoshins/apple-receipt/CI%20Build?label=Build%20Status&style=for-the-badge)      |
+| ![Deploy Status](https://img.shields.io/github/workflow/status/shoshins/apple-receipt/Nuget%20Package%20Deploy?label=Deploy%20Status&style=for-the-badge)    |
+| ![Code Quality](https://img.shields.io/sonar/quality_gate/apple-receipt?label=Sonar%20Quality%20Gate&server=https%3A%2F%2Fsonarcloud.io&style=for-the-badge) |
+| ![Last Commit](https://img.shields.io/github/last-commit/shoshins/apple-receipt?label=Last%20Commit&style=for-the-badge)      |
 
 # Nuget Packages Information
 
@@ -16,7 +23,7 @@ Describes strongly-type representation of Apple Receipt Object.
 
 | Version | Downloads |
 | ------------- | ------------- |
-| ![NuGet](https://img.shields.io/nuget/v/Apple.Receipt.Models.svg) | ![NuGet](https://img.shields.io/nuget/dt/Apple.Receipt.Models.svg) |
+| ![Nuget](https://img.shields.io/nuget/v/Apple.Receipt.Models?style=for-the-badge) | ![NuGet](https://img.shields.io/nuget/dt/Apple.Receipt.Models?style=for-the-badge) |
 
 ### Installation:
 * (Package manager): ```Install-Package Apple.Receipt.Models```
@@ -34,7 +41,7 @@ Parser for Apple Receipt that represented in base64 and encoded with ASN.1
 
 | Version | Downloads |
 | ------------- | ------------- |
-| ![NuGet](https://img.shields.io/nuget/v/Apple.Receipt.Parser.svg) | ![NuGet](https://img.shields.io/nuget/dt/Apple.Receipt.Parser.svg) |
+| ![NuGet](https://img.shields.io/nuget/v/Apple.Receipt.Parser?style=for-the-badge) | ![NuGet](https://img.shields.io/nuget/dt/Apple.Receipt.Parser?style=for-the-badge) |
 
 ### Installation:
 * (Package manager): ```Install-Package Apple.Receipt.Parser```
@@ -70,7 +77,7 @@ Two step verification: pre-validation that can be customized and App Store verif
 
 | Version | Downloads |
 | ------------- | ------------- |
-| ![NuGet](https://img.shields.io/nuget/v/Apple.Receipt.Verificator.svg) | ![NuGet](https://img.shields.io/nuget/dt/Apple.Receipt.Verificator.svg) |
+| ![NuGet](https://img.shields.io/nuget/v/Apple.Receipt.Verificator?style=for-the-badge) | ![NuGet](https://img.shields.io/nuget/dt/Apple.Receipt.Verificator?style=for-the-badge) |
 
 ### Installation:
 * (Package manager): ```Install-Package Apple.Receipt.Verificator```
