@@ -93,5 +93,18 @@ services.RegisterAppleReceiptVerificator(x =>
 // ... and resolve the service later.
 IAppleReceiptVerificatorService verificator;
 ...
-AppleReceiptVerificationResult result = await verificator.VerifyAppleReceiptAsync(appleAppReceipt);
+AppleReceiptVerificationResult verificationResult = await verificator.VerifyAppleReceiptAsync(appleAppReceipt);
+
+// OBSOLETE USAGE (Just for Backward Compatibity):
+var verificationStatus = verificationResult.Status;
+var verificationReceipt = verificationResult.Receipt;
+var verificationMessage = verificationResult.Message;
+
+// USAGE (Full Apple Response Info):
+var verificationStatus = verificationResult.AppleVerificationResponse.StatusCode;
+var verificationReceipt = verificationResult.AppleVerificationResponse.Receipt;
+var verificationLatestReceiptInfo = verificationResult.AppleVerificationResponse.LatestReceiptInfo;
+var verificationPendingRenewalInfo = verificationResult.AppleVerificationResponse.PendingRenewalInfo;
+var verificationMessage = verificationResult.Message;
+
 ```
