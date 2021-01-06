@@ -9,7 +9,7 @@ namespace Apple.Receipt.Verificator.Tests
     {
         public AppleReceiptVerificationResult ValidateReceipt(AppleAppReceipt receipt)
         {
-            return new AppleReceiptVerificationResult("Everything is Ok.", IapVerificationResultStatus.Ok);
+            return new AppleReceiptVerificationResult("Everything is Ok.", IAPVerificationResponseStatus.Ok);
         }
     }
 }

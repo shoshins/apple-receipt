@@ -7,6 +7,6 @@ namespace Apple.Receipt.Verificator.Services
     internal interface IRestService
     {
         [Post("")]
-        Task<IAPVerificationResult?> ValidateAppleReceiptAsync(IAPVerificationRequest request);
+        Task<IAPVerificationResponse?> ValidateAppleReceiptAsync(IAPVerificationRequest request);
     }
 }

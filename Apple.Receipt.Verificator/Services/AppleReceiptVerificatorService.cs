@@ -40,7 +40,7 @@ namespace Apple.Receipt.Verificator.Services
 
                 return new AppleReceiptVerificationResult(
                     "receiptData cannot be empty",
-                    IapVerificationResultStatus.WrongArgument
+                    IAPVerificationResponseStatus.WrongArgument
                 );
             }
 
@@ -57,7 +57,7 @@ namespace Apple.Receipt.Verificator.Services
 
                     return new AppleReceiptVerificationResult(
                         $"Receipt has wrong bundle ID {receipt.BundleId}",
-                        IapVerificationResultStatus.WrongArgument
+                        IAPVerificationResponseStatus.WrongArgument
                     );
                 }
 
@@ -66,7 +66,7 @@ namespace Apple.Receipt.Verificator.Services
                     // if custom Validator implemented
                     var validationResult = _customValidation.ValidateReceipt(receipt);
 
-                    if (validationResult == null || validationResult.Status != IapVerificationResultStatus.Ok)
+                    if (validationResult == null || validationResult.Status != IAPVerificationResponseStatus.Ok)
                     {
                         // and custom validation doesn't passed - failed
                         return validationResult;
@@ -83,35 +83,23 @@ namespace Apple.Receipt.Verificator.Services
             {
                 _logger.LogDebug("Start receipt verification in IAP...");
                 var request = new IAPVerificationRequest(receiptData, _settings.Value.VerifyReceiptSharedSecret);
-                var iapVerificationResult = await _restService.ValidateAppleReceiptAsync(request).ConfigureAwait(false);
+                IAPVerificationResponse iapVerificationResult = await _restService.ValidateAppleReceiptAsync(request).ConfigureAwait(false);
 
                 if (iapVerificationResult == null)
                 {
                     return new AppleReceiptVerificationResult(
                         "IAP receipt verification failed. Apple returned empty receipt.",
-                        IapVerificationResultStatus.InternalVerificationFailed
+                        IAPVerificationResponseStatus.InternalVerificationFailed
                     );
                 }
 
                 var iapStatus = iapVerificationResult.StatusCode;
                 // 1.If status <> 0 - failed
-                if (iapStatus != IapVerificationResultStatus.Ok)
+                if (iapStatus != IAPVerificationResponseStatus.Ok)
                 {
                     return new AppleReceiptVerificationResult(
                         "IAP receipt verification failed",
-                        iapStatus,
-                        iapVerificationResult.Receipt
-                    );
-                }
-
-                // 2. If there is no information about receipt - failed.
-                if (iapVerificationResult.Receipt == null)
-                {
-                    _logger.LogInformation("IAP Receipt Verification failed due empty receipt");
-
-                    return new AppleReceiptVerificationResult(
-                        "IAP Receipt Verification failed due empty receipt.",
-                        IapVerificationResultStatus.InternalVerificationFailed
+                        iapVerificationResult
                     );
                 }
 
@@ -119,8 +107,7 @@ namespace Apple.Receipt.Verificator.Services
 
                 return new AppleReceiptVerificationResult(
                     "Everything is OK.",
-                    iapVerificationResult.StatusCode,
-                    iapVerificationResult.Receipt
+                    iapVerificationResult
                 );
             }
             catch (Exception e)
@@ -129,7 +116,7 @@ namespace Apple.Receipt.Verificator.Services
 
                 return new AppleReceiptVerificationResult(
                     "Something went wrong in IAP receipt verification",
-                    IapVerificationResultStatus.InternalVerificationBroken
+                    IAPVerificationResponseStatus.InternalVerificationBroken
                 );
             }
         }
