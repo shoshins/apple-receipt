@@ -80,7 +80,7 @@ namespace Apple.Receipt.Verificator.Tests
             var result = await verificator.VerifyAppleReceiptAsync(appleAppReceipt).ConfigureAwait(false);
             Assert.NotNull(result);
             // Not OK Result check. Default.
-            Assert.True(result.AppleVerificationResponse.StatusCode == IAPVerificationResponseStatus.SharedSecretWrong);
+            Assert.True(result.AppleVerificationResponse.StatusCode == IAPVerificationResponseStatus.NotAuthenticatedReceipt);
             // Not OK Result check. Your own Check.
             // Assert.True(result.AppleVerificationResponse.StatusCode == IAPVerificationResponseStatus.Ok);
             // Assert.True(result.AppleVerificationResponse.Receipt != null || result.AppleVerificationResponse.LatestReceiptInfo != null || result.AppleVerificationResponse.PendingRenewalInfo != null);
