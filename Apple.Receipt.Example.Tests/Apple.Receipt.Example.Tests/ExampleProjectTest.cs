@@ -36,7 +36,7 @@ namespace Apple.Receipt.Example.Tests
             WeatherForecast[] weatherForecasts = JsonConvert.DeserializeObject<WeatherForecast[]>(responseContent);
             Assert.Equal(weatherForecasts.Length, 5);
             const string correctAppleReceiptResponse =
-                "== AppleReceiptLibrary == Message: IAP receipt verification failed; Status: SharedSecretWrong; ";
+                "== AppleReceiptLibrary == Message: IAP receipt verification failed; Status: NotAuthenticatedReceipt; ";
             Assert.Equal(weatherForecasts.First().AppleReceiptWeather, correctAppleReceiptResponse);
         }
     }

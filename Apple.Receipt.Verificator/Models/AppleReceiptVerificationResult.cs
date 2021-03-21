@@ -8,6 +8,13 @@ namespace Apple.Receipt.Verificator.Models
 {
     public class AppleReceiptVerificationResult
     {
+        #region .ctors
+
+        /// <summary>
+        /// Creates an instance of the <see cref="AppleReceiptVerificationResult"/>
+        /// with Detailed Apple Verification Response (<param name="verificationResponse"></param>)
+        /// and verbal result description (<param name="errorMessage"></param>)
+        /// </summary>
         public AppleReceiptVerificationResult(
             string errorMessage,
             IAPVerificationResponse verificationResponse
@@ -18,9 +25,21 @@ namespace Apple.Receipt.Verificator.Models
             if (verificationResponse != null)
             {
                 Status = verificationResponse.StatusCode;
+                // Backward compatibility.
                 Receipt = verificationResponse.Receipt;
+            } 
+            else
+            {
+                Status = IAPVerificationResponseStatus.InternalVerificationFailed;
             }
         }
+        
+        /// <summary>
+        /// Creates an instance of the <see cref="AppleReceiptVerificationResult"/>
+        /// without Detailed Apple Verification Response.
+        /// With Internal Verification Process Status (<param name="status"></param>)
+        /// and verbal result description (<param name="errorMessage"></param>)
+        /// </summary>
         public AppleReceiptVerificationResult(
             string errorMessage,
             IAPVerificationResponseStatus status
@@ -29,14 +48,35 @@ namespace Apple.Receipt.Verificator.Models
             Message = errorMessage;
             Status = status;
         }
+
+        #endregion
+        
+        /// <summary>
+        /// Represents Verification Process Results Verbal Description.
+        /// </summary>
         public string Message { get; set; }
+
+        /// <summary>
+        /// Represents Verification Process Status.
+        /// Basically, represents the same status code as <see cref="AppleVerificationResponse"/> (StatusCode) does.
+        /// But, it also extends basic Apple Response Status with Internal Verification Process Results.
+        /// </summary>
+        public IAPVerificationResponseStatus? Status { get; set; }
+        
+        /// <summary>
+        /// Represents Apple Server Verification Response.
+        /// If empty -> There is no Apple Response for some reasons.
+        /// The reason may be checked in the <see cref="Status"/> property.
+        /// </summary>
         public IAPVerificationResponse? AppleVerificationResponse { get; set; }
 
         #region Obsolete fields
 
-        [Obsolete("This field is obsolete. Please use the AppleVerificationResult instead. AppleVerificationResult.Status has the same data + full response data")]
-        public IAPVerificationResponseStatus? Status { get; set; }
-        [Obsolete("This field is obsolete. Please use the AppleVerificationResult instead. AppleVerificationResult.Receipt has the same data + full response data")]
+        /// <summary>
+        /// This field is obsolete. Please use the AppleVerificationResponse instead.
+        /// <see cref="AppleVerificationResponse"/> has the same data (Receipt property) + full response data
+        /// </summary>
+        [Obsolete("This field is obsolete. Please use the AppleVerificationResponse instead. AppleVerificationResponse.Receipt has the same data + full response data")]
         public AppleAppReceipt? Receipt { get; set; }
 
         #endregion
