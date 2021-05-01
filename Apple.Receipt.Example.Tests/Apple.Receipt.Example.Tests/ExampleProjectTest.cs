@@ -34,7 +34,7 @@ namespace Apple.Receipt.Example.Tests
             
             string responseContent = await response.Content.ReadAsStringAsync();
             WeatherForecast[] weatherForecasts = JsonConvert.DeserializeObject<WeatherForecast[]>(responseContent);
-            Assert.Equal(weatherForecasts.Length, 5);
+            Assert.Equal(5, weatherForecasts.Length);
             const string correctAppleReceiptResponse =
                 "== AppleReceiptLibrary == Message: IAP receipt verification failed; Status: NotAuthenticatedReceipt; ";
             Assert.Equal(weatherForecasts.First().AppleReceiptWeather, correctAppleReceiptResponse);

@@ -26,7 +26,9 @@ namespace Apple.Receipt.Verificator.Models
             {
                 Status = verificationResponse.StatusCode;
                 // Backward compatibility.
+#pragma warning disable 618
                 Receipt = verificationResponse.Receipt;
+#pragma warning restore 618
             } 
             else
             {

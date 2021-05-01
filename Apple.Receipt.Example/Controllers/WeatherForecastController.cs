@@ -40,7 +40,7 @@ namespace Apple.Receipt.Example.Controllers
                 Date = DateTime.Now.AddDays(index),
                 TemperatureC = rng.Next(-20, 55),
                 Summary = Summaries[rng.Next(Summaries.Length)],
-                AppleReceiptWeather = $"== AppleReceiptLibrary == Message: {verificationResult.Message}; Status: {verificationResult.Status}; "
+                AppleReceiptWeather = $"== AppleReceiptLibrary == Message: {verificationResult.Message}; Status: {verificationResult.AppleVerificationResponse.StatusCode}; "
             })
             .ToArray();
         }
