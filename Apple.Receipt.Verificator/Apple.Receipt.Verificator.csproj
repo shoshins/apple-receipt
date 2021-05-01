@@ -6,7 +6,7 @@
     <LangVersion>8.0</LangVersion>
     <Nullable>annotations</Nullable>
     <Authors>Sergey Shoshin</Authors>
-    <PackageVersion>2.1.1</PackageVersion>
+    <PackageVersion>2.2.0</PackageVersion>
     <Title>Apple.Receipt.Verificator</Title>
     <Description>Library for validating receipts with the App Store</Description>
     <Copyright>Copyright Sergey Shoshin 2018</Copyright>
