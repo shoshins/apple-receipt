@@ -10,21 +10,27 @@ namespace Apple.Receipt.Verificator.Services
 {
     internal class AppleReceiptVerificatorService : IAppleReceiptVerificatorService
     {
-        private readonly IRestService _restService;
+        private readonly IRestService _serviceFromConfiguration;
+        private readonly IProductionRestService _productionService;
+        private readonly ISandboxRestService _sandboxService;
         private readonly ILogger _logger;
         private readonly IAppleReceiptParserService _receiptParserService;
         private readonly IOptionsSnapshot<AppleReceiptVerificationSettings> _settings;
         private readonly IAppleReceiptCustomVerificatorService? _customValidation;
 
         public AppleReceiptVerificatorService(
-            IRestService restService,
+            IRestService serviceFromConfiguration,
+            IProductionRestService productionService,
+            ISandboxRestService sandboxService,
             ILogger<AppleReceiptVerificatorService> logger,
             IAppleReceiptParserService receiptParserService,
             IOptionsSnapshot<AppleReceiptVerificationSettings> settings,
             IAppleReceiptCustomVerificatorService? customValidation = null
         )
         {
-            _restService = restService;
+            _serviceFromConfiguration = serviceFromConfiguration;
+            _productionService = productionService;
+            _sandboxService = sandboxService;
             _logger = logger;
             _receiptParserService = receiptParserService;
             _settings = settings;
@@ -32,6 +38,21 @@ namespace Apple.Receipt.Verificator.Services
         }
 
         public async Task<AppleReceiptVerificationResult?> VerifyAppleReceiptAsync(string receiptData)
+        {
+            return await VerifyReceiptAsync(receiptData, _serviceFromConfiguration);
+        }
+        
+        public async Task<AppleReceiptVerificationResult?> VerifyAppleProductionReceiptAsync(string receiptData)
+        {
+            return await VerifyReceiptAsync(receiptData, _productionService);
+        }
+
+        public async Task<AppleReceiptVerificationResult?> VerifyAppleSandBoxReceiptAsync(string receiptData)
+        {
+            return await VerifyReceiptAsync(receiptData, _sandboxService);
+        }
+
+        private async Task<AppleReceiptVerificationResult?> VerifyReceiptAsync(string receiptData, IRestService restService)
         {
             // 1. Validate incoming arguments
             if (string.IsNullOrEmpty(receiptData))
@@ -44,7 +65,7 @@ namespace Apple.Receipt.Verificator.Services
                 );
             }
 
-            // 2. Prevalidate Receipt (Optional)
+            // 2. Pre-validate Receipt (Optional)
             try
             {
                 var data = Convert.FromBase64String(receiptData);
@@ -83,7 +104,7 @@ namespace Apple.Receipt.Verificator.Services
             {
                 _logger.LogDebug("Start receipt verification in IAP...");
                 var request = new IAPVerificationRequest(receiptData, _settings.Value.VerifyReceiptSharedSecret);
-                IAPVerificationResponse iapVerificationResult = await _restService.ValidateAppleReceiptAsync(request).ConfigureAwait(false);
+                IAPVerificationResponse iapVerificationResult = await restService.ValidateAppleReceiptAsync(request).ConfigureAwait(false);
 
                 if (iapVerificationResult == null)
                 {

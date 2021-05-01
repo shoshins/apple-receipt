@@ -100,7 +100,27 @@ services.RegisterAppleReceiptVerificator(x =>
 // ... and resolve the service later.
 IAppleReceiptVerificatorService verificator;
 ...
-AppleReceiptVerificationResult verificationResult = await verificator.VerifyAppleReceiptAsync(appleAppReceipt);
+
+// Usage option 1. Apple recommends you use that behaviour: https://developer.apple.com/documentation/storekit/in-app_purchase/validating_receipts_with_the_app_store
+// Like 'Check on prod and in case of 21004 check on sandbox'. 
+// BUT I CANNOT RECOMMEND THAT WAY, because Production Server cannot switch to Sandbox based on Apple Response.
+// Intruder would be able to send Sandbox data to your Server and get the Success response.
+// I Recommend the second/third options.
+AppleReceiptVerificationResult result = await verificator.VerifyAppleProductionReceiptAsync(appleAppReceipt).ConfigureAwait(false);
+if (result.Status == IAPVerificationResponseStatus.TestReceiptOnProd)
+{
+    result = await verificator.VerifyAppleSandBoxReceiptAsync(appleAppReceipt).ConfigureAwait(false);
+}
+
+// Usage option 2. Determine if the Server was requested from Preview environment
+// Or App belongs to Not published apps (based on version for example).
+var isPreviewEnvironmentOrAppIsBelongsToUnpublishedBasedOnSomePattern = true;
+result = isPreviewEnvironmentOrAppIsBelongsToUnpublishedBasedOnSomePattern
+    ? await verificator.VerifyAppleSandBoxReceiptAsync(appleAppReceipt).ConfigureAwait(false)
+    : await verificator.VerifyAppleProductionReceiptAsync(appleAppReceipt).ConfigureAwait(false);
+
+// Usage option 3. Btw, you still has previous option to setup usage in the configuration during a Server Init step.
+result = await verificator.VerifyAppleReceiptAsync(appleAppReceipt).ConfigureAwait(false);
 
 // OBSOLETE USAGE (Just for Backward Compatibity):
 var verificationStatus = verificationResult.Status;
