@@ -20,6 +20,18 @@ namespace Apple.Receipt.Verificator.Modules
                 services.Configure(configureOptions);
             }
 
+            var verificationSettings = new AppleReceiptVerificationSettings();
+            var appleProductionUrl = verificationSettings.ProductionUrl;
+            var appleSandboxUrl = verificationSettings.SandboxUrl;
+
+            services.AddRefitClient<IProductionRestService>()
+                .ConfigureHttpClient((serviceProvider, httpClient) 
+                    => httpClient.BaseAddress = new Uri(appleProductionUrl));
+            
+            services.AddRefitClient<ISandboxRestService>()
+                .ConfigureHttpClient((serviceProvider, httpClient) 
+                    => httpClient.BaseAddress = new Uri(appleSandboxUrl));
+            
             services.AddRefitClient<IRestService>()
                 .ConfigureHttpClient((serviceProvider, httpClient) 
                     => httpClient.BaseAddress = new Uri(
