@@ -8,6 +8,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Newtonsoft.Json;
 using Xunit;
 
 namespace Apple.Receipt.Verificator.Tests
@@ -102,8 +103,59 @@ namespace Apple.Receipt.Verificator.Tests
             result = await verificator.VerifyAppleReceiptAsync(appleAppReceipt).ConfigureAwait(false);
             CheckResult(result);
         }
+        
+        [Fact]
+        public void CheckAppleResponseParser()
+        {
+            const string mohammadExample = "{\"receipt\":{\"original_purchase_date_pst\":\"2020-01-3104:14:01America/Los_Angeles\",\"quantity\":\"1\",\"unique_vendor_identifier\":\"666\",\"bvrs\":\"666\",\"expires_date_formatted\":\"2020-02-2912:14:00Etc/GMT\",\"is_in_intro_offer_period\":\"false\",\"purchase_date_ms\":\"1580472840802\",\"expires_date_formatted_pst\":\"2020-02-2904:14:00America/Los_Angeles\",\"is_trial_period\":\"false\",\"item_id\":\"666\",\"unique_identifier\":\"666\",\"original_transaction_id\":\"666\",\"subscription_group_identifier\":\"666\",\"app_item_id\":\"666\",\"transaction_id\":\"666\",\"web_order_line_item_id\":\"666\",\"version_external_identifier\":\"666\",\"purchase_date\":\"2020-01-3112:14:00Etc/GMT\",\"product_id\":\"666\",\"expires_date\":\"1582978440802\",\"original_purchase_date\":\"2020-01-3112:14:01Etc/GMT\",\"purchase_date_pst\":\"2020-01-3104:14:00America/Los_Angeles\",\"bid\":\"666\",\"original_purchase_date_ms\":\"1580472841559\"},\"auto_renew_product_id\":\"666\",\"auto_renew_status\":0,\"latest_receipt_info\":{\"original_purchase_date_pst\":\"2020-01-3104:14:01America/Los_Angeles\",\"quantity\":\"1\",\"unique_vendor_identifier\":\"666\",\"bvrs\":\"666\",\"expires_date_formatted\":\"2021-12-1211:34:15Etc/GMT\",\"is_in_intro_offer_period\":\"false\",\"purchase_date_ms\":\"1607772855000\",\"expires_date_formatted_pst\":\"2021-12-1203:34:15America/Los_Angeles\",\"is_trial_period\":\"false\",\"item_id\":\"666\",\"unique_identifier\":\"666\",\"original_transaction_id\":\"666\",\"subscription_group_identifier\":\"666\",\"app_item_id\":\"666\",\"transaction_id\":\"666\",\"in_app_ownership_type\":\"PURCHASED\",\"web_order_line_item_id\":\"666\",\"purchase_date\":\"2020-12-1211:34:15Etc/GMT\",\"product_id\":\"666\",\"expires_date\":\"1639308855000\",\"original_purchase_date\":\"2020-01-3112:14:01Etc/GMT\",\"purchase_date_pst\":\"2020-12-1203:34:15America/Los_Angeles\",\"bid\":\"666\",\"original_purchase_date_ms\":\"1580472841000\"},\"latest_receipt\":\"666\",\"status\":0}";
 
+            var appleResponseObject = JsonConvert.DeserializeObject<IAPVerificationResponse>(mohammadExample);
+            
+            Assert.NotNull(appleResponseObject);
+            Assert.NotNull(appleResponseObject.Receipt);
+            Assert.Equal(666, appleResponseObject.Receipt.VersionExternalIdentifier);
+            
+            const string internetExample =
+                "{\"status\":0,\"environment\":\"Sandbox\",\"receipt\":{\"receipt_type\":\"ProductionSandbox\",\"adam_id\":0,\"app_item_id\":0,\"bundle_id\":\"com.apphud.subscriptionstest\",\"application_version\":\"1\",\"download_id\":0,\"version_external_identifier\":0,\"receipt_creation_date\":\"2019-10-1422:00:55Etc/GMT\",\"receipt_creation_date_ms\":\"1571090455000\",\"receipt_creation_date_pst\":\"2019-10-1415:00:55America/Los_Angeles\",\"request_date\":\"2019-10-1512:54:10Etc/GMT\",\"request_date_ms\":\"1571144050441\",\"request_date_pst\":\"2019-10-1505:54:10America/Los_Angeles\",\"original_purchase_date\":\"2013-08-0107:00:00Etc/GMT\",\"original_purchase_date_ms\":\"1375340400000\",\"original_purchase_date_pst\":\"2013-08-0100:00:00America/Los_Angeles\",\"original_application_version\":\"1.0\",\"in_app\":[{\"quantity\":\"1\",\"product_id\":\"SixthWeekly\",\"transaction_id\":\"1000000579060971\",\"original_transaction_id\":\"1000000579060971\",\"purchase_date\":\"2019-10-1422:00:54Etc/GMT\",\"purchase_date_ms\":\"1571090454000\",\"purchase_date_pst\":\"2019-10-1415:00:54America/Los_Angeles\",\"original_purchase_date\":\"2019-10-1422:00:55Etc/GMT\",\"original_purchase_date_ms\":\"1571090455000\",\"original_purchase_date_pst\":\"2019-10-1415:00:55America/Los_Angeles\",\"expires_date\":\"2019-10-1422:03:54Etc/GMT\",\"expires_date_ms\":\"1571090634000\",\"expires_date_pst\":\"2019-10-1415:03:54America/Los_Angeles\",\"web_order_line_item_id\":\"1000000047532125\",\"is_trial_period\":\"true\",\"is_in_intro_offer_period\":\"false\"}]},\"latest_receipt_info\":[{\"quantity\":\"1\",\"product_id\":\"SixthWeekly\",\"transaction_id\":\"1000000579060971\",\"original_transaction_id\":\"1000000579060971\",\"purchase_date\":\"2019-10-1422:00:54Etc/GMT\",\"purchase_date_ms\":\"1571090454000\",\"purchase_date_pst\":\"2019-10-1415:00:54America/Los_Angeles\",\"original_purchase_date\":\"2019-10-1422:00:55Etc/GMT\",\"original_purchase_date_ms\":\"1571090455000\",\"original_purchase_date_pst\":\"2019-10-1415:00:55America/Los_Angeles\",\"expires_date\":\"2019-10-1422:03:54Etc/GMT\",\"expires_date_ms\":\"1571090634000\",\"expires_date_pst\":\"2019-10-1415:03:54America/Los_Angeles\",\"web_order_line_item_id\":\"1000000047532125\",\"is_trial_period\":\"true\",\"is_in_intro_offer_period\":\"false\",\"subscription_group_identifier\":\"20537620\"},{\"quantity\":\"1\",\"product_id\":\"SixthWeekly\",\"transaction_id\":\"1000000579061533\",\"original_transaction_id\":\"1000000579060971\",\"purchase_date\":\"2019-10-1422:03:54Etc/GMT\",\"purchase_date_ms\":\"1571090634000\",\"purchase_date_pst\":\"2019-10-1415:03:54America/Los_Angeles\",\"original_purchase_date\":\"2019-10-1422:00:55Etc/GMT\",\"original_purchase_date_ms\":\"1571090455000\",\"original_purchase_date_pst\":\"2019-10-1415:00:55America/Los_Angeles\",\"expires_date\":\"2019-10-1422:06:54Etc/GMT\",\"expires_date_ms\":\"1571090814000\",\"expires_date_pst\":\"2019-10-1415:06:54America/Los_Angeles\",\"web_order_line_item_id\":\"1000000047532126\",\"is_trial_period\":\"false\",\"is_in_intro_offer_period\":\"false\",\"subscription_group_identifier\":\"20537620\"}],\"latest_receipt\":\"...\",\"pending_renewal_info\":[{\"expiration_intent\":\"1\",\"auto_renew_product_id\":\"SixthWeekly\",\"original_transaction_id\":\"1000000579060971\",\"is_in_billing_retry_period\":\"0\",\"product_id\":\"SixthWeekly\",\"auto_renew_status\":\"0\"}]}";
 
+            appleResponseObject = JsonConvert.DeserializeObject<IAPVerificationResponse>(internetExample);
+            
+            Assert.NotNull(appleResponseObject);
+            Assert.NotNull(appleResponseObject.Receipt);
+            Assert.Equal("ProductionSandbox", appleResponseObject.Receipt.ReceiptType);
+            Assert.Equal("com.apphud.subscriptionstest", appleResponseObject.Receipt.BundleId);
+            
+            const string internetExample2 =
+                "{\"receipt\":{\"original_purchase_date_pst\":\"2012-04-3008:05:55America/Los_Angeles\",\"original_transaction_id\":\"1000000046178817\",\"original_purchase_date_ms\":\"1335798355868\",\"transaction_id\":\"1000000046178817\",\"quantity\":\"1\",\"product_id\":\"br.com.jera.Example\",\"bvrs\":\"20120427\",\"purchase_date_ms\":\"1335798355868\",\"purchase_date\":\"2012-04-3015:05:55Etc/GMT\",\"original_purchase_date\":\"2012-04-3015:05:55Etc/GMT\",\"purchase_date_pst\":\"2012-04-3008:05:55America/Los_Angeles\",\"bid\":\"br.com.jera.Example\",\"item_id\":\"521129812\"},\"status\":0}";
+
+            appleResponseObject = JsonConvert.DeserializeObject<IAPVerificationResponse>(internetExample2);
+
+            Assert.NotNull(appleResponseObject);
+            Assert.NotNull(appleResponseObject.Receipt);
+            Assert.NotNull(appleResponseObject.Receipt.OriginalPurchaseDateDt);
+            
+            const string internetExample3 =
+            "{\"receipt\":{\"in_app\":[{is_trial_period:\"false\",original_purchase_date_pst:\"2013-10-0920:55:27America/Los_Angeles\",original_purchase_date_ms:\"1386571707000\",original_purchase_date:\"2013-10-0904:55:27Etc/GMT\",purchase_date_pst:\"2013-10-0920:55:27America/Los_Angeles\",purchase_date_ms:\"1386571707000\",purchase_date:\"2013-10-0904:55:27Etc/GMT\",original_transaction_id:\"654888452251325\",transaction_id:\"654888452251325\",product_id:\"com.example.mygame.tool1\",quantity:\"1\"}],original_application_version:\"1.0\",original_purchase_date_pst:\"2013-10-0920:55:27America/Los_Angeles\",original_purchase_date_ms:\"1386569706000\",original_purchase_date:\"2013-10-0904:55:27Etc/GMT\",request_date_pst:\"2013-10-0920:55:27America/Los_Angeles\",request_date_ms:\"1386571710087\",request_date:\"2013-10-0904:55:27Etc/GMT\",download_id:215425636588954,application_version:\"1.0\",bundle_id:\"com.example.mygame\",adam_id:654225311,receipt_type:\"Sandbox\"},environment:\"Sandbox\",status:0}";
+
+            appleResponseObject = JsonConvert.DeserializeObject<IAPVerificationResponse>(internetExample3);
+
+            Assert.NotNull(appleResponseObject);
+            Assert.NotNull(appleResponseObject.Receipt);
+            Assert.NotEmpty(appleResponseObject.Receipt.PurchaseReceipts);
+            var originalPurchaseDateDt = appleResponseObject.Receipt.PurchaseReceipts.First().OriginalPurchaseDateDt;
+            if (originalPurchaseDateDt != null)
+            {
+                Assert.Equal(2013,
+                    originalPurchaseDateDt.Value.Year);
+                Assert.Equal(2013,
+                    originalPurchaseDateDt.Value.Year);
+            }
+            else
+            {
+                throw new Exception("Date cannot be parsed");
+            }
+        }
+        
         private void CheckResult(AppleReceiptVerificationResult result)
         {
             Assert.NotNull(result);
