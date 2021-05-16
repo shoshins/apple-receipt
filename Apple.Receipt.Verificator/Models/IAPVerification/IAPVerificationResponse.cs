@@ -60,7 +60,7 @@ namespace Apple.Receipt.Verificator.Models.IAPVerification
         /// Only returned for receipts that contain auto-renewable subscriptions.
         /// </summary>
         [JsonProperty("latest_receipt_info")]
-        [JsonConverter(typeof(ObjectOrArrayToArrayConverter<AppleInAppPurchaseReceipt>))]
+        [JsonConverter(typeof(SingleOrArrayConverter<AppleInAppPurchaseReceipt>))]
         public ICollection<AppleInAppPurchaseReceipt>? LatestReceiptInfo { get; set; }
 
         /// <summary>
