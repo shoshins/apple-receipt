@@ -23,6 +23,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Example", "Example", "{3E3E
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Apple.Receipt.Example.Tests", "Apple.Receipt.Example.Tests\Apple.Receipt.Example.Tests\Apple.Receipt.Example.Tests.csproj", "{F5636CC6-F877-4E18-A53D-BE51ACAA2069}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Apple.Receipt.Example.ConsoleApp", "Apple.Receipt.Example.ConsoleApp\Apple.Receipt.Example.ConsoleApp.csproj", "{47C6F97B-04A9-41B7-99E2-EF5875AF40C0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -57,6 +59,10 @@ Global
 		{F5636CC6-F877-4E18-A53D-BE51ACAA2069}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F5636CC6-F877-4E18-A53D-BE51ACAA2069}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F5636CC6-F877-4E18-A53D-BE51ACAA2069}.Release|Any CPU.Build.0 = Release|Any CPU
+		{47C6F97B-04A9-41B7-99E2-EF5875AF40C0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{47C6F97B-04A9-41B7-99E2-EF5875AF40C0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{47C6F97B-04A9-41B7-99E2-EF5875AF40C0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{47C6F97B-04A9-41B7-99E2-EF5875AF40C0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -68,6 +74,7 @@ Global
 		{D0AB5223-241C-4152-9845-2E91A49FEAE4} = {A121C9D8-8828-413D-B138-C373BA96B347}
 		{DEB19EF1-457C-42A9-A55D-87181A4B5BAE} = {3E3EAD5B-6F36-4252-8CA5-DF0D507A0F72}
 		{F5636CC6-F877-4E18-A53D-BE51ACAA2069} = {3E3EAD5B-6F36-4252-8CA5-DF0D507A0F72}
+		{47C6F97B-04A9-41B7-99E2-EF5875AF40C0} = {3E3EAD5B-6F36-4252-8CA5-DF0D507A0F72}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {6FD45EFB-AA47-4AD2-8384-33621A498BB3}
