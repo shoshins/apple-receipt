@@ -3,12 +3,19 @@ using System.Collections;
 using System.Collections.Generic;
 using Apple.Receipt.Models;
 using Apple.Receipt.Verificator.Models.IAPVerification;
+using Newtonsoft.Json;
 
 namespace Apple.Receipt.Verificator.Models
 {
     public class AppleReceiptVerificationResult
     {
         #region .ctors
+
+        /// <summary>
+        /// Creates an empty instance of the <see cref="AppleReceiptVerificationResult"/>
+        /// </summary>
+        [JsonConstructor]
+        public AppleReceiptVerificationResult() { }
 
         /// <summary>
         /// Creates an instance of the <see cref="AppleReceiptVerificationResult"/>
