@@ -26,7 +26,7 @@ namespace Apple.Receipt.Verificator.Models.IAPVerification
 
         public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
         {
-            var list = (List<T>) value;
+            var list = (Collection<T>) value;
             if (list.Count == 1)
             {
                 value = list[0];
