@@ -29,5 +29,9 @@ jobs:
         with:
           name: Nuget-packages-${{ steps.gitversion.outputs.nuGetVersionV2 }}
           path: nuget-packages
-      - name: Push package to nuget
-        run: dotnet nuget push 'nuget-packages/*.nupkg' --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json
+      - name: Publish Apple.Receipt.Models package to Nuget
+        run: dotnet nuget push 'nuget-packages/Apple.Receipt.Models.*.nupkg' --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json
+      - name: Publish Apple.Receipt.Parser package to Nuget
+        run: dotnet nuget push 'nuget-packages/Apple.Receipt.Parser.*.nupkg' --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json
+      - name: Publish Apple.Receipt.Verificator package to Nuget
+        run: dotnet nuget push 'nuget-packages/Apple.Receipt.Verificator.*.nupkg' --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json
