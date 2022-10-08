@@ -2,10 +2,10 @@
   <PropertyGroup>
     <OutputType>Library</OutputType>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
-    <LangVersion>8.0</LangVersion>
+    <LangVersion>10</LangVersion>
     <Nullable>annotations</Nullable>
     <Authors>Sergey Shoshin</Authors>
-    <PackageVersion>2.2.0</PackageVersion>
+    <PackageVersion>2.3.0</PackageVersion>
     <Title>Apple.Receipt.Parser</Title>
     <Description>Parser for Apple Receipt that represented in base64 and encoded with ASN.1</Description>
     <Copyright>Copyright Sergey Shoshin 2018</Copyright>
@@ -13,7 +13,7 @@
     <PackageLicense>MIT</PackageLicense>
     <PackageIcon>images/icon.png</PackageIcon>
     <PackageTags>Apple Receipt Parser Base64 Asn1 Asn.1</PackageTags>
-    <PackageReleaseNotes>Models improved</PackageReleaseNotes>
+    <PackageReleaseNotes>Migrated to .net 6.0</PackageReleaseNotes>
     <TargetFramework>net6.0</TargetFramework>
   </PropertyGroup>
   <PropertyGroup>

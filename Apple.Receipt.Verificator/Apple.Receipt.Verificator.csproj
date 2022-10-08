@@ -2,7 +2,7 @@
   <PropertyGroup>
     <OutputType>Library</OutputType>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
-    <LangVersion>8.0</LangVersion>
+    <LangVersion>10</LangVersion>
     <Nullable>annotations</Nullable>
     <Authors>Sergey Shoshin</Authors>
     <PackageVersion>2.3.0</PackageVersion>
@@ -13,7 +13,7 @@
     <PackageLicense>MIT</PackageLicense>
     <PackageIcon>images/icon.png</PackageIcon>
     <PackageTags>Apple Receipt Validation AppStore</PackageTags>
-    <PackageReleaseNotes>Refit 6+ update. MSBuild version 16.8+ is now required.</PackageReleaseNotes>
+    <PackageReleaseNotes>Refit 6+ update. MSBuild version 16.8+ is now required. Migrated to .net 6.0</PackageReleaseNotes>
     <TargetFramework>net6.0</TargetFramework>
   </PropertyGroup>
   <PropertyGroup>
