@@ -1,11 +1,12 @@
 <Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <TargetFramework>net6.0</TargetFramework>
+    <LangVersion>10</LangVersion>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Apple.Receipt.Verificator" Version="2.2.1" />
+    <PackageReference Include="Apple.Receipt.Verificator" Version="2.2.4" />
   </ItemGroup>
 
 

@@ -15,10 +15,10 @@ jobs:
         with:
           # shallow clone disabled as recommended by SonarCLoud - https://github.com/marketplace/actions/sonarcloud-scan
           fetch-depth: 0
-      - name: Setup .Net Core
+      - name: Setup .Net Core 6
         uses: actions/setup-dotnet@v1
         with:
-          dotnet-version: '3.1.x'
+          dotnet-version: '6.0.x'
       - name: Restore with .Net Core
         run: dotnet restore
       - name: Build with .Net Core
