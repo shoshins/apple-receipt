@@ -6,7 +6,7 @@
     <LangVersion>8.0</LangVersion>
     <Nullable>annotations</Nullable>
     <Authors>Sergey Shoshin</Authors>
-    <PackageVersion>2.2.0</PackageVersion>
+    <PackageVersion>2.3.0</PackageVersion>
     <Title>Apple.Receipt.Verificator</Title>
     <Description>Library for validating receipts with the App Store</Description>
     <Copyright>Copyright Sergey Shoshin 2018</Copyright>
@@ -14,7 +14,7 @@
     <PackageLicense>MIT</PackageLicense>
     <PackageIcon>images/icon.png</PackageIcon>
     <PackageTags>Apple Receipt Validation AppStore</PackageTags>
-    <PackageReleaseNotes>Models and initialization improved</PackageReleaseNotes>
+    <PackageReleaseNotes>Refit 6+ update. MSBuild version 16.8+ is now required.</PackageReleaseNotes>
   </PropertyGroup>
   <PropertyGroup>
     <IncludeSymbols>true</IncludeSymbols>
@@ -45,7 +45,7 @@
     <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="3.1.10" />
     <PackageReference Include="Microsoft.Extensions.Options" Version="3.1.10" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
-    <PackageReference Include="Refit" Version="5.2.4" />
+    <PackageReference Include="Refit" Version="6.3.2" />
     <PackageReference Include="Refit.HttpClientFactory" Version="5.2.4" />
   </ItemGroup>
   <ItemGroup>
