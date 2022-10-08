@@ -1,7 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <OutputType>Library</OutputType>
-    <TargetFrameworks>netstandard2.0;netstandard2.1</TargetFrameworks>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     <LangVersion>8.0</LangVersion>
     <Nullable>annotations</Nullable>
@@ -15,6 +14,7 @@
     <PackageIcon>images/icon.png</PackageIcon>
     <PackageTags>Apple Receipt Models</PackageTags>
     <PackageReleaseNotes>Models improved</PackageReleaseNotes>
+    <TargetFramework>net6.0</TargetFramework>
   </PropertyGroup>
   <PropertyGroup>
     <IncludeSymbols>true</IncludeSymbols>
