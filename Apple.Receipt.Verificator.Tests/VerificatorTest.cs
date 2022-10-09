@@ -162,8 +162,7 @@ namespace Apple.Receipt.Verificator.Tests
         {
             Assert.NotNull(result);
             // Not OK Result check. Default.
-            Assert.True(result.AppleVerificationResponse.StatusCode == IAPVerificationResponseStatus.NotAuthenticatedReceipt 
-                        || result.AppleVerificationResponse.StatusCode == IAPVerificationResponseStatus.EmptyReceipt);
+            Assert.True(result.AppleVerificationResponse.StatusCode == IAPVerificationResponseStatus.NotAuthenticatedReceipt);
             // Not OK Result check. Your own Check.
             // Assert.True(result.AppleVerificationResponse.StatusCode == IAPVerificationResponseStatus.Ok);
             // Assert.True(result.AppleVerificationResponse.Receipt != null || result.AppleVerificationResponse.LatestReceiptInfo != null || result.AppleVerificationResponse.PendingRenewalInfo != null);
