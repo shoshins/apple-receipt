@@ -9,16 +9,14 @@ jobs:
   build:
     runs-on: ubuntu-latest
     env:
-      DOTNET_CLI_TELEMETRY_OPTOUT: 'true'
+      DOTNET_CLI_TELEMETRY_OPTOUT: true
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
         with:
           # shallow clone disabled as recommended by SonarCLoud - https://github.com/marketplace/actions/sonarcloud-scan
           fetch-depth: 0
-      - name: Setup .Net Core 6
-        uses: actions/setup-dotnet@v1
-        with:
-          dotnet-version: '6.0.x'
+      - name: Setup .Net
+        uses: actions/setup-dotnet@v3
       - name: Restore with .Net Core
         run: dotnet restore
       - name: Build with .Net Core
