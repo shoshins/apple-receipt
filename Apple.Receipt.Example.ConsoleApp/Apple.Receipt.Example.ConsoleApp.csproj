@@ -1,15 +1,18 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
         <OutputType>Exe</OutputType>
-        <TargetFramework>net6.0</TargetFramework>
-        <LangVersion>10</LangVersion>
+        <TargetFramework>net7.0</TargetFramework>
+        <IsPackable>false</IsPackable>
     </PropertyGroup>
 
     <ItemGroup>
-      <PackageReference Include="Apple.Receipt.Parser" Version="2.2.4" />
-      <PackageReference Include="Apple.Receipt.Verificator" Version="2.2.4" />
-      <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="6.0.0" />
+      <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="7.0.0" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\Apple.Receipt.Parser\Apple.Receipt.Parser.csproj" />
+      <ProjectReference Include="..\Apple.Receipt.Verificator\Apple.Receipt.Verificator.csproj" />
     </ItemGroup>
 
 </Project>
