@@ -12,8 +12,8 @@
     <PackageLicense>MIT</PackageLicense>
     <PackageIcon>images/icon.png</PackageIcon>
     <PackageTags>Apple Receipt Models</PackageTags>
-    <PackageReleaseNotes>Migrated to .NET 7.0 and NuGet package updates</PackageReleaseNotes>
-    <TargetFramework>net7.0</TargetFramework>
+    <PackageReleaseNotes>Migrated to .NET 8.0 and NuGet package updates</PackageReleaseNotes>
+    <TargetFramework>net8.0</TargetFramework>
     <RepositoryUrl>https://github.com/shoshins/apple-receipt</RepositoryUrl>
     <RepositoryType>Git</RepositoryType>
   </PropertyGroup>
@@ -43,7 +43,7 @@
     <None Include="../icon.png" Pack="true" PackagePath="images/" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.1.1">
+    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="8.0.0">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
