@@ -12,7 +12,7 @@
     <PackageLicense>MIT</PackageLicense>
     <PackageIcon>images/icon.png</PackageIcon>
     <PackageTags>Apple Receipt Models</PackageTags>
-    <PackageReleaseNotes>Migrated to .NET 7.0 and NuGet package updates</PackageReleaseNotes>
+    <PackageReleaseNotes>Migrated to .NET 8.0 and NuGet package updates</PackageReleaseNotes>
     <TargetFramework>net8.0</TargetFramework>
     <RepositoryUrl>https://github.com/shoshins/apple-receipt</RepositoryUrl>
     <RepositoryType>Git</RepositoryType>
