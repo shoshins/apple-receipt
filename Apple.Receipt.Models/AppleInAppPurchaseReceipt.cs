@@ -8,6 +8,81 @@ namespace Apple.Receipt.Models
     public class AppleInAppPurchaseReceipt
     {
         /// <summary>
+        ///     The appAccountToken associated with this transaction. 
+        /// </summary>
+        /// <remarks>
+        ///     This field is only present if your app supplied an appAccountToken(_:) 
+        ///     or provided a UUID for the applicationUsername property when the user made the purchase.
+        /// </remarks>
+        [JsonProperty("app_account_token")]
+        public string AppAccountToken { get; set; }
+
+        /// <summary>
+        ///     Purchaser of the product or a family member
+        /// </summary>
+        /// <remarks>
+        ///     A value that indicates whether the user is the purchaser of the product or is a family member with access to the product through Family Sharing.
+        /// </remarks>
+        [JsonProperty("in_app_ownership_type")]
+        public string InAppOwnershipTypeString { get; set; }
+        /// <summary>
+        ///     Purchaser of the product - strongly typed enumerator
+        /// </summary>
+        public InAppOwnershipType? OwnershipType { 
+            get {
+                if (string.IsNullOrEmpty(InAppOwnershipTypeString)) {
+                    return null;
+                }
+                switch (InAppOwnershipTypeString) {
+                    case "FAMILY_SHARED": {
+                        return InAppOwnershipType.FamilyShared;
+                    }
+                    case "PURCHASED": {
+                        return InAppOwnershipType.Purchased;
+                    }
+                    default: {
+                        return null;
+                    }
+                }
+            }
+        }
+
+        /// <summary>
+        ///     True if auto-renewable subscription has been canceled due to an upgrade.
+        /// </summary>
+        /// <remarks>
+        ///     An indicator that an auto-renewable subscription has been canceled due to an upgrade. 
+        ///     This field is only present for upgrade transactions.
+        /// </remarks>
+        [JsonProperty("is_upgraded")]
+        public bool IsUpgraded { get; set; }
+
+        /// <summary>
+        ///     True if auto-renewable subscription has been canceled due to an upgrade.
+        /// </summary>
+        /// <remarks>
+        ///     The reference name of a subscription offer that you configured in App Store Connect. 
+        ///     This field is present when a customer redeems a subscription offer code.
+        /// </remarks>
+        [JsonProperty("offer_code_ref_name")]
+        public string OfferCodeRefName { get; set; }
+
+        /// <summary>
+        ///     The identifier of the promotional offer for an auto-renewable subscription that the user redeems.
+        /// </summary>
+        [JsonProperty("promotional_offer_id")]
+        public string PromoOfferId { get; set; }
+
+        /// <summary>
+        ///     The identifier of the subscription group to which the subscription belongs. 
+        /// </summary>
+        /// <remarks>
+        ///     The value for this field is identical to the subscriptionGroupIdentifier property in SKProduct.
+        /// </remarks>
+        [JsonProperty("subscription_group_identifier")]
+        public string SubscriptionGroupId { get; set; }
+
+        /// <summary>
         ///     The number of items purchased.
         /// </summary>
         /// <remarks>
