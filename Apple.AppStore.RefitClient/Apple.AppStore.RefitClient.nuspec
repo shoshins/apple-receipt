@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>Apple.AppStore.RefitClient</id>
+    <version>0.0.1</version>
+    <title>Apple.AppStore.RefitClient</title>
+    <authors>Sergey Shoshin</authors>
+    <owners>Sergey Shoshin</owners>
+    <license>MIT</license>
+    <projectUrl>https://github.com/shoshins/apple-receipt</projectUrl>
+    <icon>images/icon.png</icon>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>REST API Client to work with App Store Server API</description>
+    <releaseNotes>Initial</releaseNotes>
+    <copyright>Copyright Sergey Shoshin 2023</copyright>
+    <tags>Apple AppStore API</tags>
+  </metadata>
+  <files>
+    <file src="../icon.png" target="images/" />
+  </files>
+</package>
