@@ -7,7 +7,6 @@
 | ![NuGet](https://img.shields.io/nuget/dt/Apple.Receipt.Verificator?label=.Verificator%20Downloads&style=for-the-badge)      |
 | ![Build Status](https://img.shields.io/github/actions/workflow/status/shoshins/apple-receipt/ci%20master.yml?style=for-the-badge&label=CI/CD%20Build)      |
 | ![Deploy Status](https://img.shields.io/github/actions/workflow/status/shoshins/apple-receipt/deploy.yml?style=for-the-badge&label=Nuget%20Deploy%20)    |
-| ![Code Quality](https://img.shields.io/sonar/quality_gate/apple-receipt?label=Sonar%20Quality%20Gate&server=https%3A%2F%2Fsonarcloud.io&style=for-the-badge) |
 | ![Last Commit](https://img.shields.io/github/last-commit/shoshins/apple-receipt?label=Last%20Commit&style=for-the-badge)      |
 
 # Nuget Packages Information
